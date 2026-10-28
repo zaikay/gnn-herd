@@ -1,5 +1,14 @@
-data/
-Data/
+/[dD]ata/
+/visuals/
+/reports/figures/
+/src/explore/
+/src/visuals/
+/src/audit/lag.py
+/configs/style.yaml
+/tests/local_visuals/
+/tests/test_lag.py
+/reports/protocol/part_a_checks.json
+/scripts/normalize_data_case.ps1
 logs/
 internal/
 .venv/

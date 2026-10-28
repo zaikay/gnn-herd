@@ -1,0 +1,7 @@
+source,url,use
+T-GCN primary paper,https://arxiv.org/abs/1811.05320,GCN and GRU family; proposed direct count head is an explicit adaptation
+dieboldmariano 1.1.0,https://pypi.org/project/dieboldmariano/1.1.0/,"dm_test API, Bartlett estimator and Harvey correction; version verified, not installed"
+DM package implementation,https://github.com/edoannunziata/dieboldmariano,origin-wise loss adapter and horizon autocovariance convention
+HistGradientBoostingRegressor 1.6.1,https://scikit-learn.org/1.6/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html,proposed Poisson-capable CPU baseline; no install or fit
+NVIDIA laptop specifications,https://www.nvidia.com/en-us/geforce/laptops/compare/,"RTX 4070 Laptop standard memory is 8 GB, distinct from 32 GB system RAM"
+ABS Edition 3 Postal Areas,https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/non-abs-structures/postal-areas,cross-border POAs preclude a reliable first-digit state shortcut

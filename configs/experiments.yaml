@@ -1,0 +1,176 @@
+protocol: protocol-v1
+status: approved_pending_commit_and_tag
+approved_on: '2026-10-28'
+scope: T02 Part A only; no fitting or forecasts authorised
+data:
+  target: certificate backed installations
+  snapshot_as_at: '2026-09-30'
+  start: '2001-04'
+  last_month: '2026-09'
+  evaluation_cutoff: '2025-09'
+  geography: ASGS Edition 3
+  panel_unmatched_codes: outside panel; retained with totals in join ledger
+  historical_zero_deductions:
+    postcodes: ['1825', '4513']
+    first: '2001-04'
+    last: '2010-12'
+    reason: CER historical total zero and nonnegative monthly counts; Gate A deduction, not imputation
+  missing_areas:
+    proposal: zero placeholder inputs with observation flag zero; retain graph nodes; no loss or evaluation
+    messages: mask source features and hidden states for unobserved nodes; no invented neighbours
+  isolates:
+    neighbour_mean: 0
+    has_observed_neighbour_flag: 0
+    own_history: retained
+  maturity: rank by cumulative base through origin, tie break by four-character postcode, equal-count terciles among observed nodes
+splits:
+  origin_definition: last observed installation month, inclusive
+  training_first_target: '2011-01'
+  input_history_start: '2001-04'
+  lookback_months: 24
+  expanding_training: true
+  training_sample_rule: sample origin s contributes horizon h when s+h <= fit origin and target month >= 2011-01; mask later target months; identical eligibility for boosting and GNN
+  training_loss_normalisation: mean over eligible observed area-sample-horizon cells; no padded targets or per-vector averaging
+  battery_scheme_limitation: July-September 2025 test targets follow battery eligibility from 1 July 2025; target remains SGU Solar installations; no date change
+  validation:
+    first_origin: '2018-11'
+    last_origin: '2021-10'
+    stride_months: 1
+  test:
+    first_origin: '2022-10'
+    last_origin: '2024-09'
+    stride_months: 1
+    access: sealed until final project evaluation; never run in T02
+  tuning_origins: ['2019-08', '2020-08']
+  alternative_horizon_24:
+    enabled: false
+    validation_first_origin: '2016-11'
+    validation_last_origin: '2019-10'
+    test_first_origin: '2021-10'
+    test_last_origin: '2023-09'
+    reason: test origins move back twelve months and validation origins back twenty-four months to preserve target separation and 36 validation origins; reapproval required
+horizons:
+  trained_monthly: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  reported_monthly: [1, 6, 12]
+  aggregate: sum of forecasts for months 1 through 12
+metrics:
+  primary: MAE
+  secondary: MASE
+  weighting: equal observed area weights, then equal origin weights; no installation weighting
+  mase:
+    seasonality: 12
+    scale_targets_start: '2011-01'
+    scale_targets_end: latest scheduled refit origin inclusive; frozen between refits
+    zero_scale: mean of strictly positive area scales from the same training window; if all zero use one installation
+    total_12_scale: twelve times monthly seasonal scale
+    label: seasonal MASE with pooled fallback for zero scales
+  maturity_groups: recomputed at every origin using origin history only
+  dm:
+    library: dieboldmariano
+    version: '1.1.0'
+    function: dieboldmariano.dm_test
+    input: origin-ordered area-averaged MAE losses, averaged over the same fixed seeds
+    adapter: V=zeros; P1=loss_model_A; P2=loss_model_B; loss=lambda actual,predicted:predicted
+    h: actual monthly horizon; 12 for twelve-month total
+    harvey_correction: true
+    variance_estimator: bartlett
+    one_sided: false
+    significance: 0.05
+    comparisons: [neighbours_vs_own, own_vs_seasonal, neighbours_vs_seasonal]
+    multiple_testing: report raw p and Holm adjustment across three pairs times four reported outcomes
+    undefined_variance: report undefined; do not invent p values
+objective:
+  name: Poisson negative log likelihood, omitting target-only factorial constant
+  formula: mean_over_observed_area_origin_horizon(mu - y * log(mu))
+  rate_floor: 0.000001
+  gradient_boosting: one pooled direct-horizon HistGradientBoostingRegressor with loss=poisson, horizon as feature
+  gnn: shared encoder; twelve softplus rate outputs
+  seasonal_naive: fixed same-month-last-year forecast, no fitted objective or tuning
+features:
+  lag_definition: lag k at origin o means y at o-k+1, for k=1..24, independent of forecast horizon
+  rolling_definition: means over k observed months ending at origin inclusive, for k=3,6,12
+  calendar_definition: boosting uses known target-month sine/cosine plus horizon; GNN uses historical month sine/cosine and horizon-specific head
+  cumulative_definition: origin base for boosting; cumulative through each input month for GNN; both start April 2001
+  own: [lags_1_to_24, rolling_mean_3_6_12, month_sin_cos, cumulative_base_through_origin, observed_flag, isolate_flag, horizon]
+  neighbours: [mean_observed_neighbour_lags_1_to_24, mean_observed_neighbour_cumulative_base, has_observed_neighbour_flag]
+  transforms: log1p counts and cumulative inputs; target remains count; no scaling fitted beyond training
+  prohibited: [area_identifier, coordinates, state_predictor, census, policy, future_counts]
+tuning:
+  configurations_per_tunable_condition: 6
+  seeds: [11, 29, 47]
+  tuning_seeds: [11]
+  score: mean validation MAE across all twelve horizons, observed areas and tuning origins
+  tie_break: lower configuration index
+  reuse_selected_tuning_fits: true
+  selected_model_refit: every three months from the first origin of each block; expanding history; monthly input updates between refits
+  refit_interval_months: 3
+  max_gnn_epochs: 75
+  timing_pilot:
+    task: T03 start, before any full GNN workload
+    required_before_full_gnn_workload: true
+    machine: same machine used for the full GNN runs
+    minimum_fits: 2
+    maximum_fits: 4
+    default_fits: 2
+    epochs: 75
+    hidden_widths: [32, 96]
+    origin: '2020-08'
+    seed: 11
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    graph: real
+    optional_extra_fits: repeat the same two timing configurations on the same seed and anchor; not additional search
+    purpose: measure time per fit, peak GPU memory and training loss curve on training data only; no validation or test scoring
+    cannot_change: [configurations, epochs, objective]
+    counts_as_hyperparameter_trial: false
+    full_workload_requires_measured_budget_approval: true
+    projected_three_gnn_conditions_limit_gpu_hours: 24
+    if_limit_exceeded: stop before full GNN workload and propose protocol-v2
+    projection_scope: report 138 validation fits and 72 later final-test fits across three GNN conditions; include pilot GPU time in conservative 24-hour total; account for training-window growth from the single pilot anchor
+  early_stopping: false
+  full_graph_batch_origins: 2
+  optimiser: Adam
+  numerical_precision: float32
+  fit_parallelism: 1
+  gradient_boosting_grid:
+    learning_rate: [0.03, 0.1]
+    max_leaf_nodes: [15, 31, 63]
+    l2_regularization: [1.0]
+    max_iter: 300
+    early_stopping: false
+  gnn_grid:
+    hidden_size: [32, 64, 96]
+    learning_rate: [0.001, 0.003]
+    weight_decay: [0.0001]
+gnn_design:
+  name: T-GCN-style graph-convolutional GRU encoder with direct multi-horizon count head
+  implemented: false
+  input_channels: 6
+  channel_names: [log1p_count, log1p_cumulative_base, month_sin, month_cos, observed_flag, isolate_flag]
+  graph_hops_per_step: 1
+  graph_operator: symmetric normalisation of masked A plus computational identity; border edge file unchanged
+  hidden_size_reference: 64
+  output_horizons: 12
+  graph_conditions: [real, no_graph, within_state_shuffled]
+  unknown_nodes: zero input and hidden state; excluded as message sources and from loss/evaluation
+  h4_extension: future replacement of node head with diffusion parameter head; not part of this task
+  gpu: NVIDIA GeForce RTX 4070 Laptop GPU
+  gpu_vram_gb_reference: 8
+  system_ram_gb: 32
+  planned_free_vram_gb: 4
+  planned_gpu_memory_gb_range: [2, 4]
+  planned_system_memory_gb_range: [8, 16]
+  runtime_status: unknown until timing pilot; no measured training run
+  sensitivity_minutes_per_fit: [1, 5, 10]
+  sensitivity_note: arithmetic scenarios only, not expected times or upper bounds; exclude pilot, preprocessing and final test
+state_assignment:
+  source: existing data/interim/ASGS_Ed3_Non_ABS_Structures_GDA2020_updated_2025.gpkg
+  layer: LGA_2021_AUST_GDA2020
+  fields: [STATE_CODE_2021, STATE_NAME_2021]
+  proposal: dissolve valid spatial LGAs by state, intersect POAs in EPSG:9473, assign largest land-area overlap; ties by state code
+  audit: retain every overlap share and flag cross-border POAs; stop on no overlap or invalid geometry
+  predictor: false
+  extra_downloads: none
+  shuffle: degree-preserving double-edge swaps within state; keep cross-state edges fixed, preserve isolates and missing-node mask
+  swaps: ten accepted swaps per intra-state edge if feasible; record attempted and accepted counts, never silently relax constraints
+  graph_seeds: [11, 29, 47]
