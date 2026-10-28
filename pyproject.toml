@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "be-gnn"
+version = "0.1.0"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "pandas==2.2.3", "numpy==2.2.6", "geopandas==1.0.1",
+  "shapely==2.1.1", "pyogrio==0.11.0", "pyproj==3.7.1",
+  "networkx==3.4.2", "matplotlib==3.10.3", "PyYAML==6.0.2",
+  "beautifulsoup4==4.13.4", "pytest==8.3.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+# Use pytest's per-user temporary directory; a shared fixed path can be owned
+# by a different Windows account after an agent run. Cache is optional.
+addopts = "-p no:cacheprovider"

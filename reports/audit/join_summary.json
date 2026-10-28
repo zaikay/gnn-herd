@@ -1,0 +1,8 @@
+{
+  "spatial_poas": 2641,
+  "cer_postcodes": 2811,
+  "matched_postcodes": 2634,
+  "matched_postcode_share": 0.9370330843116329,
+  "matched_installation_share": 0.9995094469814769,
+  "unmatched_postcodes": 177
+}

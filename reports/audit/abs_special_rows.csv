@@ -1,0 +1,4 @@
+POA_CODE_2021,POA_NAME_2021,AUS_CODE_2021,AUS_NAME_2021,AREA_ALBERS_SQKM,ASGS_LOCI_URI_2021,postcode,geometry_is_null
+9494,No usual address (Aust.),AUS,Australia,,http://linked.data.gov.au/dataset/asgsed3/POA/9494,9494,True
+9797,Migratory - Offshore - Shipping (Aust.),AUS,Australia,,http://linked.data.gov.au/dataset/asgsed3/POA/9797,9797,True
+ZZZZ,Outside Australia,ZZZ,Outside Australia,,http://linked.data.gov.au/dataset/asgsed3/POA/ZZZZ,ZZZZ,True

@@ -1,0 +1,24 @@
+{
+  "source": "data\\interim\\ASGS_Ed3_Non_ABS_Structures_GDA2020_updated_2025.gpkg",
+  "layer": "POA_2021_AUST_GDA2020",
+  "row_count": 2644,
+  "special_or_null_geometry_rows": [
+    {
+      "code": "9494",
+      "name": "No usual address (Aust.)",
+      "geometry_is_null": 1
+    },
+    {
+      "code": "9797",
+      "name": "Migratory - Offshore - Shipping (Aust.)",
+      "geometry_is_null": 1
+    },
+    {
+      "code": "ZZZZ",
+      "name": "Outside Australia",
+      "geometry_is_null": 1
+    }
+  ],
+  "cer_panel_exists": false,
+  "cer_raw_files": []
+}

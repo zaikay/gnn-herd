@@ -1,0 +1,56 @@
+{
+  "checksums_verified": 4,
+  "as_at": "2026-09-30",
+  "last_safe_test_month": "2025-09",
+  "graph_validated": true,
+  "edge_geometry_checks": 7127,
+  "component_sizes": [
+    2509,
+    112,
+    4,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "panel_rows": 859932,
+  "matched_observed_cells": 806004,
+  "spatial_poas": 2641,
+  "poas_with_observations": 2634,
+  "months": 306,
+  "missing_spatial_poa_month_cells": 2142,
+  "complete_observed_poas": 2634,
+  "zero_share_observed_matched_cells": 0.49428538816184536,
+  "historical_discrepancies": [
+    {
+      "postcode": "1825",
+      "reported_total": 0,
+      "monthly_sum": null,
+      "_merge": "left_only",
+      "difference": null,
+      "matches": false
+    },
+    {
+      "postcode": "4513",
+      "reported_total": 0,
+      "monthly_sum": null,
+      "_merge": "left_only",
+      "difference": null,
+      "matches": false
+    }
+  ],
+  "matched_installation_share": 0.9995094469814769,
+  "verdict": "CONDITIONAL GO"
+}

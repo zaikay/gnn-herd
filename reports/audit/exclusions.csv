@@ -1,0 +1,4 @@
+source_file,postcode,month,scope,reason,approved_by
+data/raw/abs_ed3_non_abs.zip:POA_2021_AUST_GDA2020,9494,,spatial graph only,ABS special-purpose row has NULL geometry; retained in abs_special_rows.csv; no CER records excluded,"researcher, conversation approval 2026-10-28"
+data/raw/abs_ed3_non_abs.zip:POA_2021_AUST_GDA2020,9797,,spatial graph only,ABS special-purpose row has NULL geometry; retained in abs_special_rows.csv; no CER records excluded,"researcher, conversation approval 2026-10-28"
+data/raw/abs_ed3_non_abs.zip:POA_2021_AUST_GDA2020,ZZZZ,,spatial graph only,ABS special-purpose row has NULL geometry; retained in abs_special_rows.csv; no CER records excluded,"researcher, conversation approval 2026-10-28"

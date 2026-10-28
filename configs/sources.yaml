@@ -1,0 +1,25 @@
+cer_page: https://cer.gov.au/markets/reports-and-data/small-scale-installation-postcode-data
+abs_page: https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files
+abs_url: https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files/ASGS_Ed3_Non_ABS_Structures_GDA2020_updated_2025.zip
+abs_edition: 3
+files:
+  data/raw/abs_ed3_non_abs.zip:
+    url: https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files/ASGS_Ed3_Non_ABS_Structures_GDA2020_updated_2025.zip
+    retrieved_at: '2026-10-28T11:33:04.874252+00:00'
+    size_bytes: 704005275
+    sha256: 1ae078ad3dde5790be06672d461d17f7cb27818c7b9713f4f35473ce0f2b3b8c
+  data/raw/cer_page.html:
+    url: https://cer.gov.au/markets/reports-and-data/small-scale-installation-postcode-data
+    retrieved_at: '2026-10-28T11:48:38.136597+00:00'
+    size_bytes: 275888
+    sha256: 889e8830c16a5ebabfb0c5c4a5661f552103281cc28f3f553025159554275ee7
+  data/raw/sgu_solar_recent.csv:
+    url: https://cer.gov.au/document/sgu-solar-installations-2011-to-present-and-totals
+    retrieved_at: '2026-10-28T11:48:38.448598+00:00'
+    size_bytes: 1236641
+    sha256: 18474fe10be68f5185a009ff7e7523553662c49d5dfcc65621fe15101aadf3f4
+  data/raw/sgu_solar_early.csv:
+    url: https://cer.gov.au/document/sgu-solar-installations-2001-to-2010
+    retrieved_at: '2026-10-28T11:48:38.712994+00:00'
+    size_bytes: 685667
+    sha256: 85046bebc4a8c19238f0e406a2fc20862e1a0922fc36814c189b5670b5e51dd2
