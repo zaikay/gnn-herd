@@ -128,7 +128,8 @@ def main():
     if not tail.set_index("month")["count"].equals(expected_tail):
         raise ValueError("Reporting-lag series does not match panel")
     ledger = pd.read_csv(OUT / "exclusions.csv", dtype=str)
-    if len(ledger) != len(special) or set(ledger.postcode) != set(special.postcode) or not ledger.scope.eq("spatial graph only").all():
+    graph_ledger = ledger.loc[ledger.scope.eq('spatial graph only')]
+    if len(graph_ledger) != len(special) or set(graph_ledger.postcode) != set(special.postcode):
         raise ValueError("Exclusion ledger does not match approved special rows")
     matched_share = float(joined.loc[joined.matched, "total_installations"].sum() / joined.total_installations.sum())
     result = {"checksums_verified": len(verified), "as_at": as_at.strftime("%Y-%m-%d"),

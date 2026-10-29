@@ -1,0 +1,7 @@
+# Baseline CPU dependencies; installation is researcher-run.
+-r requirements.lock
+scikit-learn==1.6.1
+scipy==1.15.3
+joblib==1.5.1
+threadpoolctl==3.6.0
+dieboldmariano==1.1.0

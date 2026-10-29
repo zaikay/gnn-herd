@@ -1,7 +1,9 @@
-protocol: protocol-v1
+protocol: protocol-v1.1
 status: approved_pending_commit_and_tag
-approved_on: '2026-10-28'
-scope: T02 Part A only; no fitting or forecasts authorised
+approved_on: '2026-10-29'
+scope: Gate B approved amendment; no Task 3 run authorised
+parent_protocol: protocol-v1
+amendment_report: reports/protocol/protocol_v1_1.md
 data:
   target: certificate backed installations
   snapshot_as_at: '2026-09-30'
@@ -55,7 +57,12 @@ horizons:
   aggregate: sum of forecasts for months 1 through 12
 metrics:
   primary: MAE
-  secondary: MASE
+  secondary: [MASE, RMSE]
+  rmse:
+    definition: square root after pooling squared errors over equally weighted observed areas, origins and seeds; never score averaged predictions
+    total_12: sum twelve monthly predictions and actuals before squaring
+    reason: MAE targets a median; Poisson fitted models predict a mean, aligned with squared error; MAE remains primary
+    existing_baselines: saved validation predictions only; no refit
   weighting: equal observed area weights, then equal origin weights; no installation weighting
   mase:
     seasonality: 12
@@ -79,6 +86,14 @@ metrics:
     comparisons: [neighbours_vs_own, own_vs_seasonal, neighbours_vs_seasonal]
     multiple_testing: report raw p and Holm adjustment across three pairs times four reported outcomes
     undefined_variance: report undefined; do not invent p values
+    task3:
+      comparisons: [real_vs_no_graph, real_vs_shuffled_graph, real_vs_boosting_own, real_vs_boosting_neighbours]
+      outcomes: [1, 6, 12, total_12]
+      correction: one Holm adjustment over all four pairs times four outcomes
+      family_size: 16
+      loss: origin-level area/seed-averaged absolute error; unchanged v1 Bartlett and HLN settings
+      optional_comparison: real_vs_real_without_installed_base
+      family_size_if_optional_approved: 20
 objective:
   name: Poisson negative log likelihood, omitting target-only factorial constant
   formula: mean_over_observed_area_origin_horizon(mu - y * log(mu))
@@ -152,6 +167,13 @@ gnn_design:
   hidden_size_reference: 64
   output_horizons: 12
   graph_conditions: [real, no_graph, within_state_shuffled]
+  optional_condition:
+    name: real_without_installed_base
+    enabled: false
+    approval: explicit researcher approval after timing pilot required
+    removed_channel: log1p_cumulative_base
+    comparison: real graph with installed base
+    budget: additional compute must be presented for approval; original three-condition budget unchanged
   unknown_nodes: zero input and hidden state; excluded as message sources and from loss/evaluation
   h4_extension: future replacement of node head with diffusion parameter head; not part of this task
   gpu: NVIDIA GeForce RTX 4070 Laptop GPU

@@ -1,0 +1,99 @@
+{
+  "run_id": "be4f68799849cb4c",
+  "verification": "passed",
+  "cpu_fits": 92,
+  "fit_hours_recorded": 2.637276679055568,
+  "origin_metric_rows_checked": 5184,
+  "dm_comparisons_checked": 12,
+  "source_and_package_checks": "passed",
+  "last_validation_target": "2022-10",
+  "test_forecasts_or_losses": 0,
+  "visual_files_checked": 9,
+  "broken_report_links": [],
+  "overall_scores": [
+    {
+      "model": "gradient_boosting_neighbours",
+      "outcome": "1",
+      "group": "all",
+      "mae": 3.240554153816421,
+      "mase": 1.0091422383708342
+    },
+    {
+      "model": "gradient_boosting_neighbours",
+      "outcome": "12",
+      "group": "all",
+      "mae": 4.436480726328207,
+      "mase": 1.1986388993521389
+    },
+    {
+      "model": "gradient_boosting_neighbours",
+      "outcome": "6",
+      "group": "all",
+      "mae": 3.9544364042686624,
+      "mase": 1.118497302947182
+    },
+    {
+      "model": "gradient_boosting_neighbours",
+      "outcome": "total_12",
+      "group": "all",
+      "mae": 31.118270350405545,
+      "mase": 0.6265755656381403
+    },
+    {
+      "model": "gradient_boosting_own",
+      "outcome": "1",
+      "group": "all",
+      "mae": 3.2561331952392543,
+      "mase": 1.0542120653303824
+    },
+    {
+      "model": "gradient_boosting_own",
+      "outcome": "12",
+      "group": "all",
+      "mae": 4.433081254790129,
+      "mase": 1.2741454043611469
+    },
+    {
+      "model": "gradient_boosting_own",
+      "outcome": "6",
+      "group": "all",
+      "mae": 3.96197217208266,
+      "mase": 1.170081873175333
+    },
+    {
+      "model": "gradient_boosting_own",
+      "outcome": "total_12",
+      "group": "all",
+      "mae": 30.86626895943101,
+      "mase": 0.6804050779433295
+    },
+    {
+      "model": "seasonal_naive",
+      "outcome": "1",
+      "group": "all",
+      "mae": 4.3662574875558935,
+      "mase": 1.1007489083114892
+    },
+    {
+      "model": "seasonal_naive",
+      "outcome": "12",
+      "group": "all",
+      "mae": 4.699696279422931,
+      "mase": 1.1901323562633546
+    },
+    {
+      "model": "seasonal_naive",
+      "outcome": "6",
+      "group": "all",
+      "mae": 4.584598835737788,
+      "mase": 1.1452475089187846
+    },
+    {
+      "model": "seasonal_naive",
+      "outcome": "total_12",
+      "group": "all",
+      "mae": 31.14514257993757,
+      "mase": 0.5710805471980895
+    }
+  ]
+}

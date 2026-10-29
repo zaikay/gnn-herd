@@ -1,0 +1,66 @@
+{
+  "protocol_sha256": "adc8bb45620144fb1c9b2ab1cdc5da17be5f03cdaef8f72fc6232b1698fc27d0",
+  "feature_mutation_checks_passed": 144,
+  "origins_checked": [
+    "2010-01",
+    "2018-11",
+    "2019-08",
+    "2020-08",
+    "2021-08",
+    "2021-10"
+  ],
+  "eligibility": [
+    {
+      "fit_origin": "2018-11",
+      "eligible_sample_horizon_cells": 1140
+    },
+    {
+      "fit_origin": "2019-02",
+      "eligible_sample_horizon_cells": 1176
+    },
+    {
+      "fit_origin": "2019-05",
+      "eligible_sample_horizon_cells": 1212
+    },
+    {
+      "fit_origin": "2019-08",
+      "eligible_sample_horizon_cells": 1248
+    },
+    {
+      "fit_origin": "2019-11",
+      "eligible_sample_horizon_cells": 1284
+    },
+    {
+      "fit_origin": "2020-02",
+      "eligible_sample_horizon_cells": 1320
+    },
+    {
+      "fit_origin": "2020-05",
+      "eligible_sample_horizon_cells": 1356
+    },
+    {
+      "fit_origin": "2020-08",
+      "eligible_sample_horizon_cells": 1392
+    },
+    {
+      "fit_origin": "2020-11",
+      "eligible_sample_horizon_cells": 1428
+    },
+    {
+      "fit_origin": "2021-02",
+      "eligible_sample_horizon_cells": 1464
+    },
+    {
+      "fit_origin": "2021-05",
+      "eligible_sample_horizon_cells": 1500
+    },
+    {
+      "fit_origin": "2021-08",
+      "eligible_sample_horizon_cells": 1536
+    }
+  ],
+  "unknown_nodes_zero_input": true,
+  "last_target_available_to_runner": "2022-10",
+  "test_forecasts_or_losses": 0,
+  "model_fits": 0
+}
