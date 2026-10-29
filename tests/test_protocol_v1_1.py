@@ -42,7 +42,7 @@ def test_national_revision_all_postcodes_exact_window():
 
 def test_amendment_keeps_fitting_protocol_and_disables_optional():
     old,_ = frozen_protocol(require_working=False)
-    new = config()
+    new,_ = frozen_protocol('protocol-v1.1',require_working=False)
     for key in ('data','splits','horizons','objective','features','tuning','state_assignment'):
         assert new[key] == old[key]
     assert new['metrics']['primary'] == 'MAE'

@@ -1,0 +1,32 @@
+{
+  "protocol": "protocol-v1.1",
+  "protocol_sha256": "f1693a5b0226095c5331a4e0830ddb9da15007b7c01dfe9d2b3779d826f98d82",
+  "verification": "passed",
+  "pilot_fits": 2,
+  "pilot_hours": 0.47504256816667395,
+  "anchor_batches_per_epoch": 64,
+  "reference_fit_seconds": 1062.4218517000263,
+  "validation_fits_per_condition": 46,
+  "future_test_fits_per_condition": 24,
+  "three_conditions": {
+    "conditions": 3.0,
+    "epochs_proposed": 75.0,
+    "full_fit_hours": 66.29069678836622,
+    "pilot_hours_already_spent": 0.47504256816667395,
+    "total_hours_without_margin": 66.76573935653289,
+    "planning_margin_factor": 1.2,
+    "total_hours_with_margin": 80.02387871420613
+  },
+  "optional_four_conditions": {
+    "conditions": 4.0,
+    "epochs_proposed": 75.0,
+    "full_fit_hours": 88.38759571782163,
+    "pilot_hours_already_spent": 0.47504256816667395,
+    "total_hours_without_margin": 88.8626382859883,
+    "planning_margin_factor": 1.2,
+    "total_hours_with_margin": 106.54015742955262
+  },
+  "full_runs_authorised": false,
+  "verdict": "STOP: exceeds 24 GPU hours; protocol v2 approval required",
+  "projection_note": "slower width applied to every fit and condition, scaled by training batches; 20% planning margin, not a confidence interval; no test targets loaded"
+}

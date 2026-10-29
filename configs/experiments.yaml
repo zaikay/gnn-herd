@@ -1,9 +1,9 @@
-protocol: protocol-v1.1
+protocol: protocol-v2
 status: approved_pending_commit_and_tag
 approved_on: '2026-10-29'
-scope: Gate B approved amendment; no Task 3 run authorised
-parent_protocol: protocol-v1
-amendment_report: reports/protocol/protocol_v1_1.md
+scope: approved session-based GNN protocol; researcher starts/stops runs; no run started by this amendment
+parent_protocol: protocol-v1.1
+amendment_report: reports/protocol/protocol_v2.md
 data:
   target: certificate backed installations
   snapshot_as_at: '2026-09-30'
@@ -119,7 +119,25 @@ tuning:
   reuse_selected_tuning_fits: true
   selected_model_refit: every three months from the first origin of each block; expanding history; monthly input updates between refits
   refit_interval_months: 3
-  max_gnn_epochs: 75
+  max_gnn_epochs: 65
+  epoch_selection:
+    fixed_once_before_full_runs: true
+    source: existing 75-epoch training-only pilot curves, widths 32 and 96
+    smoothing: trailing 5-epoch mean with min_periods=1, so S1 equals the first loss
+    rule: first E with (S1-SE)/(S1-S75) >= 0.98 per width; round max E up to a multiple of 5; cap at 75
+    per_width_E: {32: 63, 96: 60}
+    evidence: reports/protocol/protocol_v2_epoch_selection.json
+  checkpoints:
+    interval_epochs: 5
+    save_at_fit_completion: true
+    retain_completed_fit_checkpoint: true
+    restore: model, Adam state, completed epoch, CPU/CUDA RNG states and epoch records
+    interruption: resume last completed checkpoint; work since that checkpoint may repeat
+  sessions:
+    controlled_by: researcher starts and stops sessions on the same RTX 4070 laptop
+    gpu_hour_limit: null
+    after_each_session: read logs and update STATUS.md with completed fits per condition, measured hours so far and projected remaining hours from measured fit times
+    projection: use condition-specific measured completed-fit times and training-window batch ratios; include partial-fit progress; mark estimates and unavailable timing explicitly
   timing_pilot:
     task: T03 start, before any full GNN workload
     required_before_full_gnn_workload: true
@@ -138,10 +156,10 @@ tuning:
     purpose: measure time per fit, peak GPU memory and training loss curve on training data only; no validation or test scoring
     cannot_change: [configurations, epochs, objective]
     counts_as_hyperparameter_trial: false
-    full_workload_requires_measured_budget_approval: true
-    projected_three_gnn_conditions_limit_gpu_hours: 24
-    if_limit_exceeded: stop before full GNN workload and propose protocol-v2
-    projection_scope: report 138 validation fits and 72 later final-test fits across three GNN conditions; include pilot GPU time in conservative 24-hour total; account for training-window growth from the single pilot anchor
+    full_workload_requires_measured_budget_approval: false
+    projected_three_gnn_conditions_limit_gpu_hours: null
+    resource_decision: 24 GPU hour limit removed by researcher on 2026-10-29; use researcher-controlled sessions
+    projection_scope: report remaining session work; retain calendar-only estimates for 138 validation and 72 later test fits across three core conditions, plus 46 validation and 24 later test fits if the fourth runs; never evaluate test targets for timing
   early_stopping: false
   full_graph_batch_origins: 2
   optimiser: Adam
@@ -159,7 +177,7 @@ tuning:
     weight_decay: [0.0001]
 gnn_design:
   name: T-GCN-style graph-convolutional GRU encoder with direct multi-horizon count head
-  implemented: false
+  implemented: true
   input_channels: 6
   channel_names: [log1p_count, log1p_cumulative_base, month_sin, month_cos, observed_flag, isolate_flag]
   graph_hops_per_step: 1
@@ -167,13 +185,14 @@ gnn_design:
   hidden_size_reference: 64
   output_horizons: 12
   graph_conditions: [real, no_graph, within_state_shuffled]
+  run_order: [real, within_state_shuffled, no_graph, real_without_installed_base]
   optional_condition:
     name: real_without_installed_base
-    enabled: false
-    approval: explicit researcher approval after timing pilot required
+    enabled: true
+    approval: approved by researcher on 2026-10-29; run last; researcher may drop it if time runs short
     removed_channel: log1p_cumulative_base
     comparison: real graph with installed base
-    budget: additional compute must be presented for approval; original three-condition budget unchanged
+    budget: same six configurations, quarterly refits, three seeds and fixed epoch count as every core condition
   unknown_nodes: zero input and hidden state; excluded as message sources and from loss/evaluation
   h4_extension: future replacement of node head with diffusion parameter head; not part of this task
   gpu: NVIDIA GeForce RTX 4070 Laptop GPU

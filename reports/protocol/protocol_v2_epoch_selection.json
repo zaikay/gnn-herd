@@ -1,0 +1,26 @@
+{
+  "approved_on": "2026-10-29",
+  "rule": "trailing 5-epoch mean, min_periods=1; (S1-SE)/(S1-S75)>=0.98; first crossing per width; ceil(max(E)/5)*5 capped at 75",
+  "pilot_widths": [
+    {
+      "hidden_size": 32,
+      "first_epoch_98_percent": 63,
+      "smoothed_loss_epoch_1": -0.4783787352685956,
+      "smoothed_loss_epoch_75": -12.361436643614166,
+      "share_at_selected_epoch": 0.9820119287196459,
+      "source": "data/processed/t03_gnn/pilot/real_seed11_width32_2020-08/training_curve.csv",
+      "sha256": "fe75b933460d2e51e96baec2f8a071a241ed174ce28cafc976dfa723ea246c5b"
+    },
+    {
+      "hidden_size": 96,
+      "first_epoch_98_percent": 60,
+      "smoothed_loss_epoch_1": -4.229373375617567,
+      "smoothed_loss_epoch_75": -12.838918113708496,
+      "share_at_selected_epoch": 0.9806324324604269,
+      "source": "data/processed/t03_gnn/pilot/real_seed11_width96_2020-08/training_curve.csv",
+      "sha256": "28f3fd0169e3aa884c5aacf50fa8ce836cf8ba56c0e6dc01592707051b667683"
+    }
+  ],
+  "fixed_epochs": 65,
+  "uses_validation_or_test_scores": false
+}

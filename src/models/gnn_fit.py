@@ -5,15 +5,14 @@ import os
 from pathlib import Path
 import platform
 import subprocess
-import time
 
 import numpy as np
-import pandas as pd
 import torch
 from filelock import FileLock
 
 from features.gnn import GNNWindows
-from models.core_gnn import CoreGNN, graph_operator, poisson_loss
+from models.core_gnn import CoreGNN, graph_operator
+from models.gnn_checkpoint import run_epochs, train_epoch
 
 
 def lock_machine(root):
@@ -50,10 +49,14 @@ def fit(*args,**kwargs):
 
 def _fit(panel,cfg,protocol_sha256,condition,seed,width,learning_rate,weight_decay,
         output,purpose='pilot',edges=None):
-    """Checkpoint every epoch/fit; reject changed fingerprints; no scoring."""
+    """Checkpoint every five epochs/fit; reject changed fingerprints; no scoring."""
     if purpose not in {'pilot','approved_validation'}:
         raise ValueError('Sealed final-test fits are not implemented')
-    if condition not in cfg['gnn_design']['graph_conditions']:
+    optional = cfg['gnn_design'].get('optional_condition',{})
+    allowed = list(cfg['gnn_design']['graph_conditions'])
+    if optional.get('enabled'):
+        allowed.append(optional['name'])
+    if condition not in allowed:
         raise ValueError('Optional/unapproved graph condition is disabled')
     if condition=='within_state_shuffled' and edges is None:
         raise ValueError('Shuffled condition requires its audited seed-specific graph')
@@ -63,7 +66,7 @@ def _fit(panel,cfg,protocol_sha256,condition,seed,width,learning_rate,weight_dec
         raise ValueError('Fit settings differ from frozen grid')
     os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
     hardware = lock_machine('data/processed/t03_gnn')
-    source_files = ['src/models/core_gnn.py','src/models/gnn_fit.py','src/models/gnn_pilot.py',
+    source_files = ['src/models/core_gnn.py','src/models/gnn_fit.py','src/models/gnn_checkpoint.py',
                     'src/features/gnn.py','src/features/panel.py','src/evaluation/protocol.py',
                     'requirements-gnn.lock']
     signature = {'protocol_sha256':protocol_sha256,'condition':condition,'seed':seed,'width':width,
@@ -79,8 +82,6 @@ def _fit(panel,cfg,protocol_sha256,condition,seed,width,learning_rate,weight_dec
         raise RuntimeError('Existing checkpoint fingerprint differs; refusing overwrite/reuse')
     manifest.write_text(json.dumps(signature,indent=2),encoding='utf-8')
     if (output/'complete.json').exists():
-        if purpose=='pilot' and (output/'checkpoint.pt').exists():
-            (output/'checkpoint.pt').unlink()
         return json.loads((output/'complete.json').read_text())
     torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
     torch.use_deterministic_algorithms(True)
@@ -88,55 +89,32 @@ def _fit(panel,cfg,protocol_sha256,condition,seed,width,learning_rate,weight_dec
     torch.backends.cudnn.allow_tf32 = False
     windows = GNNWindows(panel,cfg)
     origins,targets,mask = windows.training(panel.months[-1])
-    model = CoreGNN(graph_operator(panel.edges if edges is None else edges,panel.observed,condition),panel.observed,width).cuda()
+    channels = [0,2,3,4,5] if condition=='real_without_installed_base' else None
+    graph_condition = 'real' if channels is not None else condition
+    model = CoreGNN(graph_operator(panel.edges if edges is None else edges,panel.observed,graph_condition),
+                    panel.observed,width,input_channels=5 if channels is not None else 6).cuda()
     optimiser = torch.optim.Adam(model.parameters(),lr=learning_rate,weight_decay=weight_decay)
-    checkpoint = output/'checkpoint.pt'
-    first_epoch = 0; records = []; previous_seconds = 0.0; previous_peak = 0; previous_reserved = 0
-    if checkpoint.exists():
-        saved = torch.load(checkpoint,map_location='cpu',weights_only=False)
-        model.load_state_dict(saved['model']); optimiser.load_state_dict(saved['optimiser'])
-        first_epoch,records = saved['completed_epochs'],saved['epoch_records']
-        previous_seconds = saved['wall_seconds']; previous_peak = saved['peak_gpu_memory_bytes']
-        previous_reserved = saved.get('peak_reserved_gpu_memory_bytes',0)
-    torch.cuda.synchronize(); torch.cuda.reset_peak_memory_stats(); started = time.perf_counter()
-    for epoch in range(first_epoch,cfg['tuning']['max_gnn_epochs']):
-        epoch_start = time.perf_counter(); numerator = 0.0; cells = 0
-        order = np.random.default_rng(seed+epoch).permutation(len(origins))
-        for start in range(0,len(order),cfg['tuning']['full_graph_batch_origins']):
-            use = order[start:start+cfg['tuning']['full_graph_batch_origins']]
-            x = torch.from_numpy(np.stack([windows.at(origins[i]) for i in use])).cuda()
-            y = torch.from_numpy(targets[use]).cuda(); eligible = torch.from_numpy(mask[use]).cuda()
-            optimiser.zero_grad(set_to_none=True)
-            loss = poisson_loss(model(x),y,eligible)
-            if not torch.isfinite(loss):
-                raise RuntimeError('Nonfinite training loss; no configuration/epoch/objective adjustment authorised')
-            loss.backward(); optimiser.step()
-            count = int(eligible.sum().item()); numerator += loss.item()*count; cells += count
-        torch.cuda.synchronize()
-        records.append({'epoch':epoch+1,'training_poisson_loss':numerator/cells,
-                        'eligible_cells':cells,'epoch_seconds':time.perf_counter()-epoch_start})
-        elapsed = previous_seconds+time.perf_counter()-started
-        peak = max(previous_peak,torch.cuda.max_memory_allocated())
-        temporary = output/'checkpoint.tmp'
-        torch.save({'model':model.state_dict(),'optimiser':optimiser.state_dict(),'completed_epochs':epoch+1,
-                    'epoch_records':records,'wall_seconds':elapsed,'peak_gpu_memory_bytes':peak,
-                    'peak_reserved_gpu_memory_bytes':max(previous_reserved,torch.cuda.max_memory_reserved())},temporary)
-        temporary.replace(checkpoint)
-        pd.DataFrame(records).to_csv(output/'training_curve.csv',index=False)
-        print(json.dumps({'width':width,**records[-1]}),flush=True)
+    device = torch.device('cuda')
+    torch.cuda.synchronize(); torch.cuda.reset_peak_memory_stats()
+    records,wall_seconds,peaks = run_epochs(model,optimiser,
+        lambda epoch:train_epoch(model,optimiser,windows,origins,targets,mask,epoch,seed,
+                                 cfg['tuning']['full_graph_batch_origins'],device,channels),
+        cfg['tuning']['max_gnn_epochs'],output,device,
+        interval=cfg['tuning'].get('checkpoints',{}).get('interval_epochs',5),
+        synchronise=torch.cuda.synchronize,
+        metrics=lambda:{'allocated':torch.cuda.max_memory_allocated(),'reserved':torch.cuda.max_memory_reserved()},
+        on_epoch=lambda event:print(json.dumps({'width':width,**event}),flush=True))
     torch.cuda.synchronize()
     result = {'condition':condition,'purpose':purpose,'seed':seed,'hidden_size':width,
         'fit_origin':str(panel.months[-1]),'epochs':len(records),
-        'wall_seconds':previous_seconds+time.perf_counter()-started,
+        'wall_seconds':wall_seconds,
         'mean_epoch_seconds':float(np.mean([r['epoch_seconds'] for r in records])),
-        'peak_gpu_memory_bytes':max(previous_peak,torch.cuda.max_memory_allocated()),
-        'peak_reserved_gpu_memory_bytes':max(previous_reserved,torch.cuda.max_memory_reserved()),
+        'peak_gpu_memory_bytes':peaks['allocated'],
+        'peak_reserved_gpu_memory_bytes':peaks['reserved'],
         'parameter_count':sum(p.numel() for p in model.parameters()),'validation_or_test_scoring':False}
     completion_tmp = output/'complete.tmp'
     completion_tmp.write_text(json.dumps(result,indent=2),encoding='utf-8')
     completion_tmp.replace(output/'complete.json')
-    # Pilot weights cannot be used for tuning or later forecasts. Completed
-    # measurement records/curves are retained; partial fits remain resumable.
-    if purpose=='pilot':
-        checkpoint.unlink()
+    # Protocol v2 retains the completed checkpoint. Existing historical pilot
+    # weights were already discarded under v1.1 and are not recreated.
     return result

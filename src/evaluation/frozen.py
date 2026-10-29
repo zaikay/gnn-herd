@@ -7,7 +7,7 @@ import yaml
 
 
 def frozen_protocol(tag='protocol-v1', require_working=True):
-    if tag not in {'protocol-v1','protocol-v1.1'}:
+    if tag not in {'protocol-v1','protocol-v1.1','protocol-v2'}:
         raise ValueError('Unknown approved protocol tag')
     result = subprocess.run(['git', 'show', f'{tag}:configs/experiments.yaml'],
                             capture_output=True, check=True)

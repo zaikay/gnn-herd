@@ -45,7 +45,8 @@ def test_maturity_ties_keep_codes_and_equal_group_counts():
 
 
 def test_equal_configuration_budgets_and_no_automatic_early_stopping():
-    cfg = config()
+    from evaluation.frozen import frozen_protocol
+    cfg,_ = frozen_protocol('protocol-v1.1',require_working=False)
     tune = cfg['tuning']
     gb, gnn = tune['gradient_boosting_grid'], tune['gnn_grid']
     assert len(gb['learning_rate']) * len(gb['max_leaf_nodes']) * len(gb['l2_regularization']) == 6
@@ -58,7 +59,8 @@ def test_equal_configuration_budgets_and_no_automatic_early_stopping():
 
 
 def test_recommended_budget_counts_reused_anchor_fits():
-    cfg = config()
+    from evaluation.frozen import frozen_protocol
+    cfg,_ = frozen_protocol('protocol-v1.1',require_working=False)
     assert fit_budget(cfg) == {'tuning_fits': 12, 'evaluation_fits': 36, 'reused_fits': 2,
                                'unique_fits': 46, 'validation_refits': 12}
     assert splits(cfg).loc[lambda f: f.block.eq('test'), 'fit_origin'].nunique() == 8
