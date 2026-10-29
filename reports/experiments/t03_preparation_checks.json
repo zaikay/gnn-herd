@@ -1,0 +1,63 @@
+{
+  "protocol": "protocol-v1.1",
+  "protocol_sha256": "f1693a5b0226095c5331a4e0830ddb9da15007b7c01dfe9d2b3779d826f98d82",
+  "leakage_checks": [
+    {
+      "origin": "2018-11",
+      "window_shape": [
+        24,
+        2641,
+        6
+      ],
+      "future_mutation_unchanged": true,
+      "unknown_inputs_zero": true
+    },
+    {
+      "origin": "2020-08",
+      "window_shape": [
+        24,
+        2641,
+        6
+      ],
+      "future_mutation_unchanged": true,
+      "unknown_inputs_zero": true
+    },
+    {
+      "origin": "2021-10",
+      "window_shape": [
+        24,
+        2641,
+        6
+      ],
+      "future_mutation_unchanged": true,
+      "unknown_inputs_zero": true
+    }
+  ],
+  "graph_checks": [
+    {
+      "seed": 11,
+      "edges": 7051,
+      "cross_state_edges_fixed": 190,
+      "degrees_and_missing_mask_preserved": true,
+      "sha256": "b8838eff22e5ce1976c647704c7f259ddca80597ce18807d5cc78987231926d9"
+    },
+    {
+      "seed": 29,
+      "edges": 7051,
+      "cross_state_edges_fixed": 190,
+      "degrees_and_missing_mask_preserved": true,
+      "sha256": "7f0589b48c5c4daf1443bb3d9c3328ae65323186d8f09355e27f352ef88fa441"
+    },
+    {
+      "seed": 47,
+      "edges": 7051,
+      "cross_state_edges_fixed": 190,
+      "degrees_and_missing_mask_preserved": true,
+      "sha256": "63062ae717654fb8215a6733b2264a704535f2ef88c1b240db937fa9b5dd1ecb"
+    }
+  ],
+  "latest_loaded_month": "2021-10",
+  "training_or_gpu_use": false,
+  "test_forecasts_or_losses": 0,
+  "torch_tensor_tests": "researcher must run after pinned dependency installation"
+}
