@@ -82,6 +82,8 @@ def _fit(panel,cfg,protocol_sha256,condition,seed,width,learning_rate,weight_dec
         raise RuntimeError('Existing checkpoint fingerprint differs; refusing overwrite/reuse')
     manifest.write_text(json.dumps(signature,indent=2),encoding='utf-8')
     if (output/'complete.json').exists():
+        if purpose=='approved_validation' and not (output/'checkpoint.pt').exists():
+            raise RuntimeError('Completed fit has no retained checkpoint; stop for review, do not refit')
         return json.loads((output/'complete.json').read_text())
     torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
     torch.use_deterministic_algorithms(True)

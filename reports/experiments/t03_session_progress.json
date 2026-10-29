@@ -1,0 +1,55 @@
+{
+  "protocol": "protocol-v2",
+  "protocol_sha256": "729e7a6024bb4d795aeee27b75f5b37cb19e6c4e6f4f1c278c73941181374fe7",
+  "updated_at": "2026-10-29T12:34:57.346962+00:00",
+  "conditions": [
+    {
+      "condition": "real",
+      "completed_fits": 0,
+      "planned_validation_fits": 46,
+      "partial_fits": 0,
+      "measured_hours": 0.0,
+      "timing_lower_bound": false,
+      "projected_remaining_validation_hours": 11.285772864470882,
+      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
+      "condition_complete": false
+    },
+    {
+      "condition": "within_state_shuffled",
+      "completed_fits": 0,
+      "planned_validation_fits": 46,
+      "partial_fits": 0,
+      "measured_hours": 0.0,
+      "timing_lower_bound": false,
+      "projected_remaining_validation_hours": 11.285772864470882,
+      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
+      "condition_complete": false
+    },
+    {
+      "condition": "no_graph",
+      "completed_fits": 0,
+      "planned_validation_fits": 46,
+      "partial_fits": 0,
+      "measured_hours": 0.0,
+      "timing_lower_bound": false,
+      "projected_remaining_validation_hours": 11.285772864470882,
+      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
+      "condition_complete": false
+    },
+    {
+      "condition": "real_without_installed_base",
+      "completed_fits": 0,
+      "planned_validation_fits": 46,
+      "partial_fits": 0,
+      "measured_hours": 0.0,
+      "timing_lower_bound": false,
+      "projected_remaining_validation_hours": 11.285772864470882,
+      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
+      "condition_complete": false
+    }
+  ],
+  "measured_full_fit_hours_total": 0.0,
+  "pilot_hours_separate": 0.47504256816667395,
+  "projection_scope": "validation only, no test targets; checkpointed partial epochs deducted; replay time included in measured hours; inference time excluded",
+  "test_forecasts_or_losses": 0
+}
