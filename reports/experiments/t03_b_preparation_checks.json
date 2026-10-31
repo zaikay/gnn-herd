@@ -1,0 +1,144 @@
+{
+  "plan": [
+    {
+      "condition": "real",
+      "fits": 36,
+      "reused": 2,
+      "new": 34
+    },
+    {
+      "condition": "shuffled",
+      "fits": 36,
+      "reused": 0,
+      "new": 36
+    },
+    {
+      "condition": "no_graph",
+      "fits": 36,
+      "reused": 2,
+      "new": 34
+    },
+    {
+      "condition": "without_base",
+      "fits": 36,
+      "reused": 0,
+      "new": 36
+    }
+  ],
+  "new_fits": 140,
+  "reused_checkpoints_checked": [
+    "data/processed/t03_screen_v3/gpu/B_real_seed11_2019-08/checkpoint.pt",
+    "data/processed/t03_screen_v3/gpu/B_real_seed11_2020-08/checkpoint.pt",
+    "data/processed/t03_screen_v3/gpu/B_no_graph_seed11_2019-08/checkpoint.pt",
+    "data/processed/t03_screen_v3/gpu/B_no_graph_seed11_2020-08/checkpoint.pt"
+  ],
+  "dm_family": [
+    [
+      "gnn_real",
+      "gnn_no_graph",
+      "1"
+    ],
+    [
+      "gnn_real",
+      "gnn_no_graph",
+      "6"
+    ],
+    [
+      "gnn_real",
+      "gnn_no_graph",
+      "12"
+    ],
+    [
+      "gnn_real",
+      "gnn_no_graph",
+      "total_12"
+    ],
+    [
+      "gnn_real",
+      "gnn_shuffled",
+      "1"
+    ],
+    [
+      "gnn_real",
+      "gnn_shuffled",
+      "6"
+    ],
+    [
+      "gnn_real",
+      "gnn_shuffled",
+      "12"
+    ],
+    [
+      "gnn_real",
+      "gnn_shuffled",
+      "total_12"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_own",
+      "1"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_own",
+      "6"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_own",
+      "12"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_own",
+      "total_12"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_neighbours",
+      "1"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_neighbours",
+      "6"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_neighbours",
+      "12"
+    ],
+    [
+      "gnn_real",
+      "gradient_boosting_neighbours",
+      "total_12"
+    ],
+    [
+      "gnn_real",
+      "gnn_no_base",
+      "1"
+    ],
+    [
+      "gnn_real",
+      "gnn_no_base",
+      "6"
+    ],
+    [
+      "gnn_real",
+      "gnn_no_base",
+      "12"
+    ],
+    [
+      "gnn_real",
+      "gnn_no_base",
+      "total_12"
+    ]
+  ],
+  "dm_family_size": 20,
+  "equal_weight_score_rows": 240,
+  "protected_original_files_unchanged": 22,
+  "full_tests_passed": 124,
+  "study_training_or_forward_passes": 0,
+  "gpu_use": false,
+  "sealed_test_forecasts_or_losses": 0
+}

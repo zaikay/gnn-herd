@@ -1,0 +1,27 @@
+{
+  "completed_gpu_fits": 12,
+  "checkpoint_epochs": 65,
+  "retained_checkpoints": 12,
+  "monthly_mae_and_rmse_rows_checked": 144,
+  "fit_hours": 1.1535243091666456,
+  "selected": "B",
+  "candidate_c_mae_advantage_over_b_percent": 0.8385053959366173,
+  "b_real_anchor_mae": {
+    "2019-08": 3.795345343412406,
+    "2020-08": 4.621629281874375
+  },
+  "b_no_graph_anchor_mae": {
+    "2019-08": 3.9025726547755606,
+    "2020-08": 4.671806231701216
+  },
+  "frozen_baseline_anchor_mean_mae": {
+    "gradient_boosting_own_frozen": 3.909813332547024,
+    "gradient_boosting_neighbours_frozen": 3.9154653036250338
+  },
+  "core_campaign_remaining_fits": 104,
+  "core_campaign_remaining_fit_hours": 7.4644322636465015,
+  "optional_ablation_projected_fit_hours": 2.622856922351819,
+  "gpu_use_by_audit": false,
+  "new_fits": 0,
+  "sealed_test_forecasts_or_losses": 0
+}
