@@ -1,0 +1,67 @@
+{
+  "verification": "passed",
+  "protocol": "protocol-v2",
+  "origin_rows_checked": 39312,
+  "score_rows_checked": 364,
+  "seed_rows_checked": 1092,
+  "dm_tests_checked": 20,
+  "gnn_conditions": 4,
+  "unique_gnn_fits": 184,
+  "retained_checkpoints": 184,
+  "all_conditions_same_machine_and_software": true,
+  "figure_csv_files_checked": 18,
+  "map_areas": 2641,
+  "map_unknown_errors": 7,
+  "test_forecasts_or_losses": 0,
+  "new_fits": 0,
+  "gpu_use": false,
+  "measured_full_fit_hours": 41.24725190888885,
+  "gate_c_finding": "No: real graph is worse than shuffled on both MAE and MASE for every reported outcome.",
+  "real_vs_shuffled": [
+    {
+      "outcome": "1",
+      "real_mae": 5.231934072268128,
+      "shuffled_mae": 5.155356331089415,
+      "real_minus_shuffled_mae_percent": 1.485401517581053,
+      "real_mase": 1.5253631466646431,
+      "shuffled_mase": 1.445430490153895,
+      "mae_direction": "higher",
+      "mase_direction": "higher",
+      "p_holm": 0.0287010884221756
+    },
+    {
+      "outcome": "6",
+      "real_mae": 5.637800574527513,
+      "shuffled_mae": 5.548518942809445,
+      "real_minus_shuffled_mae_percent": 1.609107450804892,
+      "real_mase": 1.6593139026055563,
+      "shuffled_mase": 1.6124836469219446,
+      "mae_direction": "higher",
+      "mase_direction": "higher",
+      "p_holm": 0.0531935225810793
+    },
+    {
+      "outcome": "12",
+      "real_mae": 5.91223836503707,
+      "shuffled_mae": 5.808167541348051,
+      "real_minus_shuffled_mae_percent": 1.791801337481136,
+      "real_mase": 1.71877550365838,
+      "shuffled_mase": 1.6133697448287734,
+      "mae_direction": "higher",
+      "mase_direction": "higher",
+      "p_holm": 1.0
+    },
+    {
+      "outcome": "total_12",
+      "real_mae": 56.69844988624176,
+      "shuffled_mae": 55.65538705483243,
+      "real_minus_shuffled_mae_percent": 1.8741453192692603,
+      "real_mase": 1.2721166226846217,
+      "shuffled_mase": 1.2069773546770604,
+      "mae_direction": "higher",
+      "mase_direction": "higher",
+      "p_holm": 0.5315687705070502
+    }
+  ],
+  "broken_report_links": []
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "saved_baselines_only",
+  "baseline_run": "be4f68799849cb4c",
+  "reported_score_rows_matched": 48,
+  "rmse_rows_matched": 48,
+  "seed_score_rows_matched": 144,
+  "prior_moran_reproduced": true,
+  "gnn_prediction_files_opened": 0,
+  "gnn_comparisons_computed": 0,
+  "new_fits": 0,
+  "gpu_use": false,
+  "metrics": "MAE/MASE means across seeds; RMSE root after pooled MSE; seed SD/min/max on seed scores"
+}

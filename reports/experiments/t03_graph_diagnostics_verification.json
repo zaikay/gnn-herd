@@ -1,0 +1,11 @@
+{
+  "mae_rows_reproduced": 26,
+  "signed_rows_reproduced": 208,
+  "protected_files_unchanged": 22,
+  "new_tests_passed": 4,
+  "figures": 7,
+  "report_links_checked": 23,
+  "new_fits": 0,
+  "gpu_use": false,
+  "test_forecasts_or_losses": 0
+}

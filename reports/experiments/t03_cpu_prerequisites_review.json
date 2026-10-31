@@ -1,0 +1,68 @@
+{
+  "cpu_jobs_completed": 46,
+  "new_cpu_fits": 39,
+  "new_cpu_fit_seconds": 3653.079702700139,
+  "new_cpu_fit_hours": 1.0147443618611498,
+  "both_frozen_selections_retained": true,
+  "base_origins": 114,
+  "base_shape": [
+    114,
+    2634,
+    12
+  ],
+  "base_strict_prior_dates": true,
+  "old_and_new_declared_threads": 8,
+  "current_backends_under_same_limit": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 8,
+      "prefix": "libscipy_openblas",
+      "filepath": "D:\\docs.zix\\CED\\Eco-Finance\\ART5\\workspace\\BE-GNN\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-13e2df515630b4a41f92893938845698.dll",
+      "version": "0.3.29",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 8,
+      "prefix": "vcomp",
+      "filepath": "D:\\docs.zix\\CED\\Eco-Finance\\ART5\\workspace\\BE-GNN\\.venv\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+      "version": null
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 8,
+      "prefix": "libscipy_openblas",
+      "filepath": "D:\\docs.zix\\CED\\Eco-Finance\\ART5\\workspace\\BE-GNN\\.venv\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-f07f5a5d207a3a47104dca54d6d0c86a.dll",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    }
+  ],
+  "versions_match_historical": true,
+  "extra_tuning_scores_reproduced_from_forecasts": 4,
+  "frozen_tuning_scores_reproduced_from_forecasts": 2,
+  "timing_ratio_min": 0.42595110879267095,
+  "timing_ratio_max": 3.4124991137165432,
+  "aggregate_extra_timing_ratio": 1.8423120506877957,
+  "historical_background_load_or_clock_telemetry_available": false,
+  "cause_established": false,
+  "approx_test_command_overlaps_from_log_mtimes": [
+    {
+      "job": "extra_gradient_boosting_own_l63_seed11_2019-08",
+      "test_log": "t03_v3_screen_final_targeted_tests.log",
+      "approx_overlap_seconds": 16.01
+    },
+    {
+      "job": "extra_gradient_boosting_own_l63_seed11_2019-08",
+      "test_log": "t03_v3_screen_targeted_workspace_tests.log",
+      "approx_overlap_seconds": 41.452197
+    }
+  ],
+  "protected_original_files_unchanged": 22,
+  "new_fits_this_audit": 0,
+  "gpu_use": false
+}

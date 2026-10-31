@@ -1,0 +1,38 @@
+{
+  "condition": "within_state_shuffled",
+  "verification": "passed",
+  "fits": 46,
+  "retained_checkpoints": 46,
+  "forecast_files": [
+    {
+      "seed": 11,
+      "shape": [
+        36,
+        2634,
+        12
+      ],
+      "sha256": "d5e8d685568765a13277e34fbffb6964e8f769d84213fcc514ef5450bb4f7910"
+    },
+    {
+      "seed": 29,
+      "shape": [
+        36,
+        2634,
+        12
+      ],
+      "sha256": "10e0d2510d05ebada907b65a81c1054ce1b11d4c87aa7ebd6d1e13583b45f7d6"
+    },
+    {
+      "seed": 47,
+      "shape": [
+        36,
+        2634,
+        12
+      ],
+      "sha256": "52cccdc269eecb42cdbb975cdd97d4a6ea297ec01dd6be8fb93bfa84778a0f8f"
+    }
+  ],
+  "source_hashes": "passed",
+  "last_target": "2022-10",
+  "test_forecasts_or_losses": 0
+}

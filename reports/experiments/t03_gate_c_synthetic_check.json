@@ -1,0 +1,18 @@
+{
+  "scope": "synthetic_fixture_only",
+  "models": 7,
+  "origins": 18,
+  "areas": 6,
+  "dm_family_sizes_tested": [
+    16,
+    20
+  ],
+  "figure_csv_files_checked": 14,
+  "map_unknown_area_checked": true,
+  "fixture_report_links": "passed",
+  "gnn_study_prediction_files_opened": 0,
+  "study_gnn_comparisons_computed": 0,
+  "full_test_suite_run": false,
+  "gpu_use": false,
+  "threadpool_limit": 1
+}

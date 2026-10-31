@@ -1,54 +1,54 @@
 {
   "protocol": "protocol-v2",
   "protocol_sha256": "729e7a6024bb4d795aeee27b75f5b37cb19e6c4e6f4f1c278c73941181374fe7",
-  "updated_at": "2026-10-29T12:34:57.346962+00:00",
+  "updated_at": "2026-10-31T12:01:10.272325+00:00",
   "conditions": [
     {
       "condition": "real",
-      "completed_fits": 0,
+      "completed_fits": 46,
       "planned_validation_fits": 46,
       "partial_fits": 0,
-      "measured_hours": 0.0,
+      "measured_hours": 9.01595752302777,
       "timing_lower_bound": false,
-      "projected_remaining_validation_hours": 11.285772864470882,
-      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
-      "condition_complete": false
+      "projected_remaining_validation_hours": 0.0,
+      "projection_source": "condition-specific completed-fit mean per batch/epoch",
+      "condition_complete": true
     },
     {
       "condition": "within_state_shuffled",
-      "completed_fits": 0,
+      "completed_fits": 46,
       "planned_validation_fits": 46,
       "partial_fits": 0,
-      "measured_hours": 0.0,
+      "measured_hours": 11.925685924361089,
       "timing_lower_bound": false,
-      "projected_remaining_validation_hours": 11.285772864470882,
-      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
-      "condition_complete": false
+      "projected_remaining_validation_hours": 0.0,
+      "projection_source": "condition-specific completed-fit mean per batch/epoch",
+      "condition_complete": true
     },
     {
       "condition": "no_graph",
-      "completed_fits": 0,
+      "completed_fits": 46,
       "planned_validation_fits": 46,
       "partial_fits": 0,
-      "measured_hours": 0.0,
+      "measured_hours": 10.960403501833271,
       "timing_lower_bound": false,
-      "projected_remaining_validation_hours": 11.285772864470882,
-      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
-      "condition_complete": false
+      "projected_remaining_validation_hours": 0.0,
+      "projection_source": "condition-specific completed-fit mean per batch/epoch",
+      "condition_complete": true
     },
     {
       "condition": "real_without_installed_base",
-      "completed_fits": 0,
+      "completed_fits": 46,
       "planned_validation_fits": 46,
       "partial_fits": 0,
-      "measured_hours": 0.0,
+      "measured_hours": 9.345204959666718,
       "timing_lower_bound": false,
-      "projected_remaining_validation_hours": 11.285772864470882,
-      "projection_source": "slower-width pilot fallback; no completed condition fits yet",
-      "condition_complete": false
+      "projected_remaining_validation_hours": 0.0,
+      "projection_source": "condition-specific completed-fit mean per batch/epoch",
+      "condition_complete": true
     }
   ],
-  "measured_full_fit_hours_total": 0.0,
+  "measured_full_fit_hours_total": 41.24725190888885,
   "pilot_hours_separate": 0.47504256816667395,
   "projection_scope": "validation only, no test targets; checkpointed partial epochs deducted; replay time included in measured hours; inference time excluded",
   "test_forecasts_or_losses": 0
