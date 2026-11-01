@@ -1,0 +1,23 @@
+{
+  "fresh_epochs": 100,
+  "source_epochs": 65,
+  "continued_epochs": 35,
+  "bit_exact_weights": true,
+  "bit_exact_adam": true,
+  "bit_exact_losses": true,
+  "rng_restored": true,
+  "source_checkpoint_unchanged": true,
+  "constant_learning_rate": 0.003,
+  "scheduler": null,
+  "data_order": "seed11 + epoch, production train_epoch",
+  "scope": "synthetic CPU only; same-device deterministic GPU continuation required, no cross-device claim",
+  "study_fits": 0,
+  "gpu_use": false,
+  "test_forecasts_or_losses": 0,
+  "source_sha256": {
+    "src/models/b2.py": "3e568cf6551af90a76ff82f5a5de95cd8a19cdbd40afafccddda945e2c64d4d3",
+    "src/models/b2_screen.py": "fc3d66eb002eddbfe223accd003e9d8381a4eed1d519c7a9c93fe22e27840723",
+    "src/models/gnn_checkpoint.py": "bfddb081acd83aad9f97f4552b02f3f858ccaec43c7ec88c912726037ab2bb75",
+    "src/features/b2.py": "9331983505f2e6439fa7057fc61948f7acdc44ac5a699dbb44b1c2b408469945"
+  }
+}

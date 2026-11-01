@@ -1,0 +1,26 @@
+{
+  "reference_score_rows_reproduced": 156,
+  "pooled_score_rows": 260,
+  "seed_rows": 780,
+  "origin_loss_rows": 28080,
+  "dm_family_size": 16,
+  "dm_and_independent_holm_verified": true,
+  "cost_only_test_refits_per_condition": 24,
+  "cost_only_total_refits": 144,
+  "cost_hours_by_resource": {
+    "CPU boosting": {
+      "hours_low": 1.6728878147247794,
+      "hours_central": 2.1211170042893674,
+      "hours_high": 2.661087535525206
+    },
+    "GPU B": {
+      "hours_low": 7.24318186896776,
+      "hours_central": 7.821067353740126,
+      "hours_high": 8.492082699015931
+    }
+  },
+  "fits_executed": 0,
+  "gpu_use": false,
+  "test_forecasts_or_losses": 0,
+  "new_unit_tests_passed": 5
+}

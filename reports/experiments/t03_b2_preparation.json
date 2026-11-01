@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-01",
+  "original_frozen_files_unchanged": 22,
+  "targeted_tests_passed": 14,
+  "learned_weight_rules": "reports/protocol/learned_weight_rules.md",
+  "learned_validation_complete": true,
+  "robustness_models": 10,
+  "epoch_retention_rule": "MAE100 <= 0.995 * MAE65, selected real configuration over both anchors/horizons 1-12",
+  "matched_B2_conditions": [
+    "real",
+    "no_graph",
+    "learned_graph",
+    "identity_control"
+  ],
+  "continuation_proof_current": true,
+  "fresh_100_fallback_if_proof_invalid": true,
+  "study_fits": 0,
+  "synthetic_CPU_resume_test_executed": true,
+  "gpu_use": false,
+  "test_forecasts_or_losses": 0
+}
