@@ -1,0 +1,64 @@
+{
+  "scope": "synthetic only; no new study forecast evaluation",
+  "source_sha256": {
+    "src/models/b2_adaptive.py": "af3b0c66dbaba82cc636ece8e9c563ddff4736d2f48a69fb13a5c3c0723069d3",
+    "src/models/b2_runtime.py": "0e6b35ee2ac9c5600c18aaa98e98b23ead66eb23080bbb91c917d266d1d8faf9",
+    "src/models/b2_graph_screen.py": "bd81d03f34fcc11659b24ac4462aee17fe0be385f956657ebe848457096e63cc",
+    "src/models/b2_validation.py": "bc357d69591bd47dafab4ea61b093c5d76d2c26bac0a5d7029c9eadaf98989f7",
+    "src/evaluation/b2_graph_screen_report.py": "449fb10f368a784a9f4f44b23a02bbf60f9a5ed6ab520c70972bdd313326febd",
+    "src/evaluation/b2_gate_c.py": "e958608af108cb10e850b0251627e66cf46676e2c10ff9417955146d3cd3d98c",
+    "src/evaluation/b2_campaign_plan.py": "939a307665a830160983e6b35630e0e19ad7289be52f27ef63f2bf7249567cea",
+    "src/models/b2.py": "3e568cf6551af90a76ff82f5a5de95cd8a19cdbd40afafccddda945e2c64d4d3",
+    "src/features/b2.py": "9331983505f2e6439fa7057fc61948f7acdc44ac5a699dbb44b1c2b408469945",
+    "src/models/gnn_checkpoint.py": "bfddb081acd83aad9f97f4552b02f3f858ccaec43c7ec88c912726037ab2bb75",
+    "src/features/gnn.py": "b660837edd3adf2a9b1e341695d54a874e1893a7b4c9de6fc76f301cf2b9b1db",
+    "src/features/panel.py": "adaf0fadf79f231c032e5754bae8baecaa641bf4df4957755cbefc681dd432f4",
+    "src/models/screen_architectures.py": "ad34eb2d0ab0a141ec8f113d55a49d38880ac819c429c8c25e6197f1c3e1cb56",
+    "src/evaluation/gate_c_metrics.py": "60b3e8d97986ef61268a283c45105c9b230580617d8c73f09b4ed54a3c2dd3fd",
+    "src/evaluation/gate_c_io.py": "ed40ed0e163ca2e5cbe9954fd0f7f04cbb05391c1598138b337cdb13b272bd05",
+    "src/evaluation/dm.py": "badd276f3767efe7f5cc1069b9e71572c63416e5bf27a2613e23e6be90423400",
+    "src/evaluation/baselines.py": "9698258bb8fe2cb4c324d592da0bbeb4245a37ec737a55b24c4ccc5b7e6b4a6a"
+  },
+  "note_sha256": "58f945d954e885bd65ee68127ed024ccb41ce44ac9455ac608c11ddb831e5b63",
+  "frozen_B2_sources_and_data_match": true,
+  "synthetic_cases": {
+    "20": {
+      "scores": 364,
+      "dm_tests": 20,
+      "figures_and_csvs": 14,
+      "all_files_under_5MB": true
+    },
+    "28": {
+      "scores": 468,
+      "dm_tests": 28,
+      "figures_and_csvs": 14,
+      "all_files_under_5MB": true
+    }
+  },
+  "parameter_counts": {
+    "learned": {
+      "total": 68000,
+      "embeddings": 52820
+    },
+    "identity": {
+      "total": 71072,
+      "embeddings": 52820
+    }
+  },
+  "campaign_counts": {
+    "4": {
+      "identities": 144,
+      "new_fits": 140,
+      "reuse": 4
+    },
+    "6": {
+      "identities": 216,
+      "new_fits": 208,
+      "reuse": 8
+    }
+  },
+  "machine_count": 1,
+  "gpu_use": false,
+  "study_fits": 0,
+  "test_forecasts_or_losses": 0
+}

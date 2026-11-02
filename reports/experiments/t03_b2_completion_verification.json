@@ -1,0 +1,29 @@
+{
+  "primary_fits": 14,
+  "extensions": 4,
+  "retained_checkpoints": 18,
+  "selected_config_id": 3,
+  "selected_configuration": {
+    "width": 64,
+    "rate": 0.003,
+    "decay": 0.0001
+  },
+  "selected_epochs": 100,
+  "mae65": 4.130388506306019,
+  "mae100": 3.970786896498435,
+  "relative_improvement_percent": 3.864082266448169,
+  "primary_fit_hours": 0.97665634983334,
+  "additional_extension_hours": 0.1022037123055553,
+  "total_fit_hours_without_double_counting": 1.0788600621388953,
+  "mean_monthly_mae_by_model": {
+    "B2_no_graph_e100": 4.023877559707238,
+    "B2_no_graph_e65": 3.990168538268904,
+    "B2_real_e100": 3.970786896498435,
+    "B2_real_e65": 4.130388506306019,
+    "B_no_graph_e65": 4.287189443238388,
+    "B_real_e65": 4.208487312643391
+  },
+  "gpu_use_by_audit": false,
+  "study_fits_by_audit": 0,
+  "test_forecasts_or_losses": 0
+}
