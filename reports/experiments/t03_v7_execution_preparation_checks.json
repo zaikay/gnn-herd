@@ -1,0 +1,91 @@
+{
+  "scope": "synthetic pipeline and validation-date inference only",
+  "synthetic_models": 6,
+  "synthetic_ensemble_scores": 416,
+  "synthetic_chain_rows": 10,
+  "synthetic_interval_rows": 26,
+  "synthetic_figure_table_files": 22,
+  "validation_inference_replay": {
+    "gradient_boosting_own": {
+      "max_absolute_difference": 0.0,
+      "dates": [
+        "2019-08",
+        "2019-09",
+        "2019-10"
+      ],
+      "new_fits": 0
+    },
+    "gradient_boosting_neighbours": {
+      "max_absolute_difference": 0.0,
+      "dates": [
+        "2019-08",
+        "2019-09",
+        "2019-10"
+      ],
+      "new_fits": 0
+    },
+    "B2_real": {
+      "max_absolute_difference": 6.103515625e-05,
+      "CPU_GPU_tolerance": 0.0002,
+      "dates": [
+        "2019-08",
+        "2019-09",
+        "2019-10"
+      ],
+      "new_fits": 0
+    }
+  },
+  "latest_real_target_materialised": "2019-10",
+  "test_targets_materialised": 0,
+  "GPU_operations": 0,
+  "new_model_fits": 0,
+  "tag_created": false,
+  "source_sha256": {
+    "src/models/final_test_runtime.py": "fe34e176cf410f2ea4f0c8d7abb289904636f453a3ce058381130ccd3cc6cbd3",
+    "src/models/final_test.py": "72abe66930c604d3b1e6a668dbd69819d1f715c028419e48ddeb35fc6f8bc2b8",
+    "src/features/sealed_panel.py": "1a163ac8bfe7c408053e6a7129b134034a9cff79d7f19f510cabe5ff4f8dec15",
+    "src/evaluation/final_test.py": "5ad699f30f4580f04b1ef898774fe68c6352b26e552d81ef4c48b425900c67d1",
+    "src/evaluation/final_test_metrics.py": "8d079ac82c918c1d32795e872672666f924aecd7974ca9e8531c138bf51b3c07",
+    "src/evaluation/final_test_report.py": "e717b60d210072095cf1fdf8a3ef144fab44712c278e33472acc577ca06dba59",
+    "src/models/b2_adaptive.py": "af3b0c66dbaba82cc636ece8e9c563ddff4736d2f48a69fb13a5c3c0723069d3",
+    "src/models/b2.py": "3e568cf6551af90a76ff82f5a5de95cd8a19cdbd40afafccddda945e2c64d4d3",
+    "src/models/b_validation.py": "56d1a0b6d809e774839ea4fe5b5c9b73b86989740c2ba5a2ebbb98eeac0d5658",
+    "src/models/screen_architectures.py": "ad34eb2d0ab0a141ec8f113d55a49d38880ac819c429c8c25e6197f1c3e1cb56",
+    "src/models/gnn_checkpoint.py": "bfddb081acd83aad9f97f4552b02f3f858ccaec43c7ec88c912726037ab2bb75",
+    "src/models/gnn_fit.py": "9987ceb09502dbde53c7a38c783dd09bc660bb8ba42b7fa81bb9708492f56707",
+    "src/models/core_gnn.py": "3ff2a434fa7c67f1fcc075ec776182a7140eb7f8f03cf7482dd88fa2a55e0b19",
+    "src/features/panel.py": "adaf0fadf79f231c032e5754bae8baecaa641bf4df4957755cbefc681dd432f4",
+    "src/features/b2.py": "9331983505f2e6439fa7057fc61948f7acdc44ac5a699dbb44b1c2b408469945",
+    "src/features/gnn.py": "b660837edd3adf2a9b1e341695d54a874e1893a7b4c9de6fc76f301cf2b9b1db",
+    "src/features/builder.py": "2311365021d8f48d664f684005a15ebea24e5f60775bb95a42c5cc6051e14321",
+    "src/evaluation/protocol.py": "1177520b1d5466167cd55d718f2dc33e6b555ee78216cf483b76f2523a0f9f4c",
+    "src/evaluation/baselines.py": "9698258bb8fe2cb4c324d592da0bbeb4245a37ec737a55b24c4ccc5b7e6b4a6a",
+    "src/evaluation/gate_c_metrics.py": "60b3e8d97986ef61268a283c45105c9b230580617d8c73f09b4ed54a3c2dd3fd",
+    "src/evaluation/dm.py": "badd276f3767efe7f5cc1069b9e71572c63416e5bf27a2613e23e6be90423400",
+    "src/evaluation/v7_chain_evidence.py": "7349067cec8982119762356294cf7e87118e5b486c06b9265020eccc42418866",
+    "src/evaluation/graph_diagnostics_report.py": "b7262ff90b53805bf9dbe93d0dd65f644246f643aaf9ad35226e174c78d8c831",
+    "src/models/screen_cpu.py": "2b7c8f87e5b377bdc0e798f3b55acd57a3692b2d1d14a394126f6bd0f84bae56",
+    "src/evaluation/frozen.py": "0dd870a397b81a1024d73d1f49dde56da2129edacb07b797507febcd7cf7f92f",
+    "configs/experiments.yaml": "729e7a6024bb4d795aeee27b75f5b37cb19e6c4e6f4f1c278c73941181374fe7",
+    "requirements.lock": "386c36b737c7e116f8cbc27f7283b0b8533205c921ef534f9d39665d059469a9",
+    "requirements-baselines.lock": "005236b7227c7ac5c0bd21d7cc52b2547fd18ba0da0f1454c1a343f004b68a1c",
+    "requirements-gnn.lock": "75abf78494c1c568892ed0b7df0dcc712621e4e4ce41c8e98d5f99ce6a851cee",
+    "pyproject.toml": "64cf6ea05282328c60dfbfca527a8a4bf6891744710147f1c90d35f298f8c3de"
+  },
+  "spec_sha256": "ab913b035b976baf6b00057b623c5b65002626e6455ad9fb8df84a8622ab8821",
+  "inventory_sha256": "2ea6e9dc25cbd2f339258b8b04b2f287ba6fd33356d645b968d6452aab2150df",
+  "note_sha256": "9162d5738d62d599a0c5bebca11b1711cd726ca61ff7e1dfafb0606593649dc4",
+  "resource_projection": {
+    "validation_minibatches_per_epoch_per_seed": 738,
+    "test_minibatches_per_epoch_per_seed": 656,
+    "GPU_hours_by_condition": {
+      "real": 2.2991450094073773,
+      "shuffled": 5.005293694098831,
+      "no_graph": 3.373069595259206,
+      "without_base": 2.8883373258517837
+    },
+    "GPU_hours_total": 13.565845624617198,
+    "CPU_hours_total": 2.1211170042893674,
+    "scope": "calendar arithmetic and saved fit times only; excludes final feature/prediction/evaluation overhead"
+  }
+}
