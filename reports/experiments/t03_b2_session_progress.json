@@ -1,0 +1,41 @@
+{
+  "conditions": [
+    {
+      "condition": "real",
+      "completed_fit_identities": 36,
+      "new_campaign_fit_hours": 2.4050777331388478,
+      "recorded_fit_hours_including_reuse": 2.5865381355832993,
+      "estimated_remaining_fit_hours": 0,
+      "basis": "verified complete"
+    },
+    {
+      "condition": "shuffled",
+      "completed_fit_identities": 36,
+      "new_campaign_fit_hours": 5.630955405861185,
+      "recorded_fit_hours_including_reuse": 5.630955405861185,
+      "estimated_remaining_fit_hours": 0,
+      "basis": "verified complete"
+    },
+    {
+      "condition": "no_graph",
+      "completed_fit_identities": 36,
+      "new_campaign_fit_hours": 3.5648592687221634,
+      "recorded_fit_hours_including_reuse": 3.794703294666607,
+      "estimated_remaining_fit_hours": 0,
+      "basis": "verified complete"
+    },
+    {
+      "condition": "without_base",
+      "completed_fit_identities": 36,
+      "new_campaign_fit_hours": 3.2493794915832566,
+      "recorded_fit_hours_including_reuse": 3.2493794915832566,
+      "estimated_remaining_fit_hours": 0,
+      "basis": "verified complete"
+    }
+  ],
+  "remaining_estimated_fit_hours": 0,
+  "new_campaign_fit_hours": 14.850271899305453,
+  "recorded_fit_hours_including_reuse": 15.261576327694348,
+  "test_forecasts_or_losses": 0,
+  "gpu_use": false
+}

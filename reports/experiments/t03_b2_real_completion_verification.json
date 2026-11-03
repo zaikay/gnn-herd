@@ -1,0 +1,71 @@
+{
+  "condition": "real",
+  "unique_fits": 36,
+  "epochs": 100,
+  "reused_screen_fits": 2,
+  "new_fit_hours": 2.4050777331388478,
+  "recorded_fit_hours_including_reuse": 2.5865381355832993,
+  "forecast_shapes": {
+    "11": [
+      36,
+      2634,
+      12
+    ],
+    "29": [
+      36,
+      2634,
+      12
+    ],
+    "47": [
+      36,
+      2634,
+      12
+    ]
+  },
+  "artifact_sha256": {
+    "data\\processed\\t03_b2_validation\\real\\seed11_2018-11\\checkpoint.pt": "12fb464304c45bfdc2e332c97cfcb307ff755a9ec47dd5b4da0d989dcbf9922c",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2018-11\\checkpoint.pt": "6a9208dff9e8499d0467cdc8e99f2098c4760b8c00680ead0b5be26467473861",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2018-11\\checkpoint.pt": "6c6962d84818048eadd579681456867681c5120b6a3be46e0e0391a981d0129a",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2019-02\\checkpoint.pt": "13d377ed5f79b22f85f143e755541696a8995936a1c2c17c9404d1a78fda53c4",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2019-02\\checkpoint.pt": "35ddedd617931944882e391b98385cfa363896c456d15f95f515164b1fddc760",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2019-02\\checkpoint.pt": "d2f39aa36dae5a2d969cdb2b9a63ccd3af7c21c7932a2ce20de7be79c8c73c35",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2019-05\\checkpoint.pt": "2cab17a721902abd12fe81d890d5fd65bc4a60404e7a2296ee4ba9401844e299",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2019-05\\checkpoint.pt": "7bf855081a60a24b0031cf122b02bd2bfc1d73caf66050b527cffab8f044f6bc",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2019-05\\checkpoint.pt": "3cd401165f1a53e23eac26cc5adfba2bc946b52bf5aa47951e646bc449bec23e",
+    "data\\processed\\t03_b2_screen\\c3_real_seed11_2019-08_e100\\checkpoint.pt": "23309eacce235e8e5aee03c8a78f4e7a26b7284db22ad4741120dd4ae3b6746c",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2019-08\\checkpoint.pt": "f5a222ab58b00be44f67c2c79ad2df7589ffb75eab44dbda16232d3b69e71bcd",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2019-08\\checkpoint.pt": "1c7b20ac1008ddc48ea230728e6ba54341f122abff4513e7e14af82f7d0cec93",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2019-11\\checkpoint.pt": "24642069cde6442360705a2d8d12d8ab9130b2ec6757c85620d8047b2d468761",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2019-11\\checkpoint.pt": "9af769d7a67b1f94e2bc88b33b4c5877592c58d6423b3ceff01cdd0c23b9871b",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2019-11\\checkpoint.pt": "83c06fff432120dc2354708645214f685f1f95172d16e922dc573c487eb23a5e",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2020-02\\checkpoint.pt": "ce2c392f3fb85fa52c9eefc09c8fa413b8b5c85d170d760847088912e3179692",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2020-02\\checkpoint.pt": "990c8262fe2c4178ced9118e6e3b8528c83f318618967bb9da54d05b78754468",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2020-02\\checkpoint.pt": "c45e05dab4ba870213a2d60a1d9025d9165810b931601b394bac7fe866979beb",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2020-05\\checkpoint.pt": "1977a61f6f524e6a3c28df0c11707ace641175a8650a14f832aea5b0a8206fd6",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2020-05\\checkpoint.pt": "048ad1dd46e0bcf78edf3121918f6e2015f86625b4bc4e0cabc26182c9ad3fba",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2020-05\\checkpoint.pt": "d2238ccf67e5d9821b58712457e8e0d45be953346af8770d3e7086cb03f63682",
+    "data\\processed\\t03_b2_screen\\c3_real_seed11_2020-08_e100\\checkpoint.pt": "9d0a12b85a74b640ba8ae8bcea9b72b693571b0354507e1fc415888127151175",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2020-08\\checkpoint.pt": "100e0bea5eb51ef18a4fcd11aa54bce06df021aaca666d6fca68a3f3c074135a",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2020-08\\checkpoint.pt": "493339b4e0f85142f4ccd49fa630b99f0b8fb15bbc7070630f80878e3dbf3ed7",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2020-11\\checkpoint.pt": "9a217867b6a8ed1ba9aaf88b53f7e96318a88ca88c2acc76326c59d760b266c3",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2020-11\\checkpoint.pt": "2d6b8eda85cbd2ad866587358de2b98ff30ed81d7150001fbfa0fc64ea130d86",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2020-11\\checkpoint.pt": "5dce29bfcb8a81bd27c18ac57db6b3472a3cfbb8475d175b5b40eb911ac7a509",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2021-02\\checkpoint.pt": "42b9f512e77edb25d91f4dbc6269436329eec33d923b87087a13ffee3a48c359",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2021-02\\checkpoint.pt": "10e417c573acc61349dc050e1bf79cb25baaf5f7d01d3528fee4b067c0ce787e",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2021-02\\checkpoint.pt": "1078e817e5933b763c4248bebdd240b33582698ca0f44cc159c6700cd36e5d0e",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2021-05\\checkpoint.pt": "a811d2724488d0e23e302b37201596b5d510d535e958cd2d8a80c74dc15f9f00",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2021-05\\checkpoint.pt": "765da4187a9922cc864ab6ef6e7e9072cf17e0c56562a9738fe0fa2959b4c4ac",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2021-05\\checkpoint.pt": "0aa156fa6573d9d68388c57200d908a8a7a911e64ef0f3cc4ca5632c47a88282",
+    "data\\processed\\t03_b2_validation\\real\\seed11_2021-08\\checkpoint.pt": "60b79e5f979c29b230037907d80790389f06a196b61dba299f284335e951e719",
+    "data\\processed\\t03_b2_validation\\real\\seed29_2021-08\\checkpoint.pt": "f89d7329fd0cb3c084c294f3b0079b31cb5ff7c556b422d35d156c884ccb7495",
+    "data\\processed\\t03_b2_validation\\real\\seed47_2021-08\\checkpoint.pt": "7f4bc352744a0870452a47837a317eecf2c526688e0440331cd9e18ffce02ce2",
+    "data\\processed\\t03_b2_validation\\real\\predictions_seed11.npz": "93bb135900d24e01f349ad67c40748135949fb53e00dcbcb4fa5d270da7ea598",
+    "data\\processed\\t03_b2_validation\\real\\predictions_seed29.npz": "ee04274296ef362148d6522decdb52ba7f288316002f85ac55ee71c1a3044019",
+    "data\\processed\\t03_b2_validation\\real\\predictions_seed47.npz": "28ed86c54ef0ae9d62e8e2371b7ece760785fc22a7df2ed18f3158224e009f73"
+  },
+  "source_and_reuse_provenance_match": true,
+  "gpu_use": false,
+  "new_fits": 0,
+  "forecast_losses_computed": false,
+  "test_forecasts_or_losses": 0
+}

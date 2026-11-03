@@ -1,0 +1,71 @@
+{
+  "condition": "no_graph",
+  "unique_fits": 36,
+  "epochs": 100,
+  "reused_screen_fits": 2,
+  "new_fit_hours": 3.5648592687221634,
+  "recorded_fit_hours_including_reuse": 3.794703294666607,
+  "forecast_shapes": {
+    "11": [
+      36,
+      2634,
+      12
+    ],
+    "29": [
+      36,
+      2634,
+      12
+    ],
+    "47": [
+      36,
+      2634,
+      12
+    ]
+  },
+  "artifact_sha256": {
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2018-11\\checkpoint.pt": "d2a5b86c41a8b96689d6ce337281c4f6c9b148ba7d13985a11e291d478036a50",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2018-11\\checkpoint.pt": "c06091cfd64a118afbc2fba8e80facfe74fb2394030d549bfd3b0d01c98ec44b",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2018-11\\checkpoint.pt": "8f215522f4decdd056771b445efb42de737e5dd94df3e88b77f3422df1676bcd",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2019-02\\checkpoint.pt": "82be13e99abda065f6162652a85b802be8f611c6cd923c02c21fcbfba32ba0a1",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2019-02\\checkpoint.pt": "b6764124b326349d762c047d87b76ab87d4dd5d3758fb538e631026ed9cea21e",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2019-02\\checkpoint.pt": "ddff75e8bcec0bea0f0811d79c9b85ff372a69abc7bbee77a388af69d2d9088e",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2019-05\\checkpoint.pt": "79c95312ea14f2df1c97b0eae02b290e703dea95f049c7b5b52c4d52d7220448",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2019-05\\checkpoint.pt": "7be3a12446736c3b3ad3dfb663a58ecf493cb4fa9239858f48391e55ccb93a76",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2019-05\\checkpoint.pt": "1789c4c1b99b99b1e55ecd447c6e4f9e4c6a3a34996b4bf04c4c1e0c7986844f",
+    "data\\processed\\t03_b2_screen\\c3_no_graph_seed11_2019-08_e100\\checkpoint.pt": "d59ffd9c4012869088f5b9a6c718fb87cf9cb674c2f3398290832fa75f474094",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2019-08\\checkpoint.pt": "920f3f912e04b0765a55f132f3cf44418b74b1a074dae60fe876635dee54e8c4",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2019-08\\checkpoint.pt": "1a243db89ec8dfa0d5fb261e2d8a07119d316a66a58e39c6ce7ce62b638457bd",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2019-11\\checkpoint.pt": "5bfc25a9c0e4d51a316ae9cbaed6e82ec96f727707154bf575a29e9ddb256b8a",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2019-11\\checkpoint.pt": "55019cb959ef01e72b72116e58dc3727fa4b8934c774ae75973b395980440aa0",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2019-11\\checkpoint.pt": "7688c049e40d45dd0f1cd24aa3bc504e6adfcdfb7440d1197d42dc54e9a79a6a",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2020-02\\checkpoint.pt": "053ce51324165b4fd4acc995f54daaacd6198a110f3baa4790d1135c541f94b1",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2020-02\\checkpoint.pt": "64d35d64dace7bab4e834e8c7cc5cd151fee57fc87b204acffc3eb6f0b7609ec",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2020-02\\checkpoint.pt": "12a21405b74583c45f9005fd656143fad71440dd5fd08c3de3fa1a6cde270bb1",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2020-05\\checkpoint.pt": "6abf62e99b6ba1c60e8ae66101c88f7f13fdbff8e0e131b0a9edf92bf6105f64",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2020-05\\checkpoint.pt": "47eb624641f736aa910fa5d3aba7e42b87cee5fc5a72a419f23740b62676f857",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2020-05\\checkpoint.pt": "3751c4c9ec58a66b565928c33421b67f3cd05147b208cae011ee08edc58aca98",
+    "data\\processed\\t03_b2_screen\\c3_no_graph_seed11_2020-08_e100\\checkpoint.pt": "ea66892de683f8cbb8b641e8b2a3253c7311a86e469fc79709fdd66e3769b40e",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2020-08\\checkpoint.pt": "a52c193b95280a0631e9ae7eafc883ceaee1e2baa410011ce43c3cd030f13a4d",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2020-08\\checkpoint.pt": "bff5d646c3709025f24588e32666f1feee8a5e2a9cf418d3ab0f9558aacad234",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2020-11\\checkpoint.pt": "6fbfb10eb5a05cebd6b687d14dccbc539200d2c5760f3019d588b1de881048f6",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2020-11\\checkpoint.pt": "827f052490a5a20a700f9b1e86115c90611915936ca7a32046bde4233c2e0e39",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2020-11\\checkpoint.pt": "e0173578dff3d70b873fa91891cf43c44c2f9f8b76a8c4a80987ba7a66a0217e",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2021-02\\checkpoint.pt": "5a2801e39b397f624ebedc235804029a3ac7dbc516d43df55521bcd7a3ec4d69",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2021-02\\checkpoint.pt": "83ba92316c339b0359e89467f5af683d89351565206bd6e70ca47a0deeecb37f",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2021-02\\checkpoint.pt": "e2962f22d741252c7223464e96d12b4e28224595352c917d3c459caa1b406787",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2021-05\\checkpoint.pt": "c84595d2898da2c63b0688099ab60e19260d927fa8d482ce016e9c168f880559",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2021-05\\checkpoint.pt": "5a23ab51e80c407eff0357cac0a3a09636bcf2554724cd5ac15d80e783de2607",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2021-05\\checkpoint.pt": "1cdd7bb157ed1ea53e18402dcb1f7ea3005e52f198b7982ec354ac0cc41afeb3",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed11_2021-08\\checkpoint.pt": "ece2289619cb3ed1e1c21c8cf255cff83338c9f9002ba3cd469c820eb33391b2",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed29_2021-08\\checkpoint.pt": "d466d4b4fbe2d2362448d3ff23179b21e7230ed7638d43930cff73bd4b5d7ca5",
+    "data\\processed\\t03_b2_validation\\no_graph\\seed47_2021-08\\checkpoint.pt": "a62203a5127f891744e96c9427362bdaed1fc4e4b3eb442164fc629516d18752",
+    "data\\processed\\t03_b2_validation\\no_graph\\predictions_seed11.npz": "e9e7dde515ac416dba1aca2cb5f71d9cc686bad89a9f50e2473fd5a5046ba456",
+    "data\\processed\\t03_b2_validation\\no_graph\\predictions_seed29.npz": "50f46aac3f966c598429a19d91e2d8fae9ccc0a41010cc14906f55d37f921829",
+    "data\\processed\\t03_b2_validation\\no_graph\\predictions_seed47.npz": "e60d61e7b4c2163ff1abde048fb5256fd69ca886f2aba07bd2e19ab24e5914e7"
+  },
+  "source_and_reuse_provenance_match": true,
+  "gpu_use": false,
+  "new_fits": 0,
+  "forecast_losses_computed": false,
+  "test_forecasts_or_losses": 0
+}

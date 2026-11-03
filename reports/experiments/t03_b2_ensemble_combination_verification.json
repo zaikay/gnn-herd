@@ -1,0 +1,20 @@
+{
+  "verification": "passed",
+  "score_rows_checked": 936,
+  "expanding_weight_rows": 648,
+  "all36_weight_rows": 18,
+  "bias_rows": 5184,
+  "ensemble_vs_individual_seed_rows": 832,
+  "artifact_files_under_5MB": 77,
+  "broken_report_links": [],
+  "ensemble_and_combination_algebra_checked": true,
+  "frozen_rule_and_input_hashes_match": true,
+  "model_refits": 0,
+  "gpu_use": false,
+  "test_forecasts_or_losses": 0,
+  "full_test_suite": {
+    "passed": 164,
+    "warnings": 1,
+    "log": "logs/t03_b2_ensemble_full_tests.log"
+  }
+}
