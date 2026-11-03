@@ -1,0 +1,45 @@
+{
+  "scope": "validation only; chain order unset; no test-block access",
+  "candidate_count": 11,
+  "aggregation_views": 2,
+  "chains_alpha_each": 0.025,
+  "superiority_p_convention": "existing two-sided DM; lower-tail p also displayed, not silently substituted",
+  "NI_null": "E[L_combination - 1.01 L_own] >= 0; alternative < 0",
+  "pooled_1_3": "within-origin mean of absolute errors across areas/horizons 1,2,3, then seeds; DM h=3, 36 origins",
+  "NI_p_convention": "one-sided lower tail of margin-shifted HLN DM, df=n-1",
+  "ordering": "A/B identifiers reproduce candidate listing, NOT a fixed testing sequence",
+  "input_sha256": {
+    "data\\processed\\t03_b2_ensemble_combination\\learned_B2_ensemble_seed11_part0.npz": "881fe30c0ea28a5fdd89d1add4a8f628f1b9a91c92f0dd3c76c29fcb674aeb2e",
+    "data\\processed\\t03_b2_ensemble_combination\\learned_B2_ensemble_seed11_part1.npz": "0ca42ea0ebe774f7f4c6ae41b96f0c8f1961ef86102a0df0a93b9b9f0aed93ac",
+    "data\\processed\\t03_b2_ensemble_combination\\learned_B2_ensemble_seed29_part0.npz": "65d44a7611dd0d242a570c9f675f801c31c2ec576c849500c20b4b3adc006767",
+    "data\\processed\\t03_b2_ensemble_combination\\learned_B2_ensemble_seed29_part1.npz": "dcc6470b9f562f9cf493f53afc08fae66349ac0350040ebeb50fb03612c6f006",
+    "data\\processed\\t03_b2_ensemble_combination\\learned_B2_ensemble_seed47_part0.npz": "9f91f941cb7b664de197c9927ce464449828169489ef6128c28b2e7138736c5f",
+    "data\\processed\\t03_b2_ensemble_combination\\learned_B2_ensemble_seed47_part1.npz": "2e5863891de5b173bb21c0a90bcc886cef17c23aa8eb0f8e1b8af08ceb88bc0c",
+    "data\\processed\\t03_b2_validation\\real\\predictions_seed11.npz": "93bb135900d24e01f349ad67c40748135949fb53e00dcbcb4fa5d270da7ea598",
+    "data\\processed\\t03_b2_validation\\real\\predictions_seed29.npz": "ee04274296ef362148d6522decdb52ba7f288316002f85ac55ee71c1a3044019",
+    "data\\processed\\t03_b2_validation\\real\\predictions_seed47.npz": "28ed86c54ef0ae9d62e8e2371b7ece760785fc22a7df2ed18f3158224e009f73",
+    "data\\processed\\t03_b2_validation\\without_base\\predictions_seed11.npz": "d722752a4c4debc0d1a8150fae8da57ee170d53aa2e5df2d8bacf98501a64a42",
+    "data\\processed\\t03_b2_validation\\without_base\\predictions_seed29.npz": "6287f9e42223d06066419774702e29b0bde25d986ee8362d3f778325a4ba2b6e",
+    "data\\processed\\t03_b2_validation\\without_base\\predictions_seed47.npz": "424990e5da43512ee4da49e963cc6c12217ca15d4f9745ca66a34ae773e9ce1d"
+  },
+  "baselines": {
+    "baseline_run": "be4f68799849cb4c",
+    "prediction_sha256": {
+      "data/processed/t02_baselines/be4f68799849cb4c/seasonal_naive.npz": "317bdd10c206cbd8af911f6e4afb1dddc5e7b2a936a6d78be66653ec9a66a261",
+      "data/processed/t02_baselines/be4f68799849cb4c/gradient_boosting_own_seed11.npz": "a438375a3fe0f47cc65fc8f901ea7c73cffe885f442121cd66bf448022d7ee49",
+      "data/processed/t02_baselines/be4f68799849cb4c/gradient_boosting_own_seed29.npz": "335c1473127bcf26213723e42c3872c5d8fddf09312883f0f949f81567029bc1",
+      "data/processed/t02_baselines/be4f68799849cb4c/gradient_boosting_own_seed47.npz": "953e7bd791babedf17d8da18c5780eb7735a937bfa2748495823a91138ef38fc",
+      "data/processed/t02_baselines/be4f68799849cb4c/gradient_boosting_neighbours_seed11.npz": "19b08d2ccd22581cfd2d5fa2b1e2b5c707af685e12e75581ba72e6b441dde2bc",
+      "data/processed/t02_baselines/be4f68799849cb4c/gradient_boosting_neighbours_seed29.npz": "234679557316e11f5625228e463429b15e9fd23e2b2eb23cca0de224f9a5e6d1",
+      "data/processed/t02_baselines/be4f68799849cb4c/gradient_boosting_neighbours_seed47.npz": "dea84686b08546b01c402966619d62b0d27e882e825c2c1b984a8043921a0dff"
+    },
+    "legacy_seasonal_identifiers": "inherited from verified common panel and identical origin calendar"
+  },
+  "source_sha256": {
+    "src/evaluation/v7_chain_evidence.py": "7349067cec8982119762356294cf7e87118e5b486c06b9265020eccc42418866",
+    "src/evaluation/dm.py": "badd276f3767efe7f5cc1069b9e71572c63416e5bf27a2613e23e6be90423400"
+  },
+  "model_refits": 0,
+  "gpu_use": false,
+  "test_forecasts_or_losses": 0
+}
