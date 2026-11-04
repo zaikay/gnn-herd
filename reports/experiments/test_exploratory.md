@@ -296,6 +296,169 @@ Both matched individual-seed boosting and primary boosting-ensemble references a
 | B2_real | gradient_boosting_neighbours | 6 | all | mae | 3.071803 | 3.293013 | 6.717562 | False | 47 | boosting three-seed forecast ensemble |
 | B2_real | gradient_boosting_neighbours | total_12 | all | mae | 22.191399 | 26.178925 | 15.231817 | False | 47 | boosting three-seed forecast ensemble |
 
+## EXPLORATORY 7. Test-origin halves and B2 control claim checks
+
+EXPLORATORY, post-test, saved three-seed forecast-ensemble losses only. Halves split **forecast origins**, not target months: October 2022-September 2023 and October 2023-September 2024, twelve origins each. Their target windows overlap; these are descriptive strata, not independent experiments or a change to the final test. No fits, new tests of significance, tuning or confirmatory changes.
+
+### EXPLORATORY 7.1 All-area half scores
+
+Equal-origin MAE and signed error; RMSE = square root of mean origin MSE. Signed error = forecast minus actual. Monthly units: systems/area/month; total units: systems/area/twelve-month window. All eight models and four outcomes are shown.
+
+| model | outcome | group | first_origin | last_origin | origins | mae | rmse | mean_signed_error |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gradient_boosting_own | 1 | all | 2022-10 | 2023-09 | 12 | 2.864041 | 5.210599 | 0.517787 |
+| gradient_boosting_own | 6 | all | 2022-10 | 2023-09 | 12 | 3.181325 | 6.125626 | 0.703435 |
+| gradient_boosting_own | 12 | all | 2022-10 | 2023-09 | 12 | 3.457632 | 7.019467 | 0.832805 |
+| gradient_boosting_own | total_12 | all | 2022-10 | 2023-09 | 12 | 22.734135 | 49.065229 | 7.437451 |
+| gradient_boosting_neighbours | 1 | all | 2022-10 | 2023-09 | 12 | 2.836587 | 5.167856 | 0.395206 |
+| gradient_boosting_neighbours | 6 | all | 2022-10 | 2023-09 | 12 | 3.156307 | 6.111449 | 0.549745 |
+| gradient_boosting_neighbours | 12 | all | 2022-10 | 2023-09 | 12 | 3.453383 | 7.086712 | 0.661474 |
+| gradient_boosting_neighbours | total_12 | all | 2022-10 | 2023-09 | 12 | 22.603725 | 49.516889 | 5.636014 |
+| B2_real | 1 | all | 2022-10 | 2023-09 | 12 | 2.728168 | 5.175538 | -0.668790 |
+| B2_real | 6 | all | 2022-10 | 2023-09 | 12 | 3.253555 | 6.790602 | -1.460372 |
+| B2_real | 12 | all | 2022-10 | 2023-09 | 12 | 3.598415 | 8.217792 | -1.700779 |
+| B2_real | total_12 | all | 2022-10 | 2023-09 | 12 | 25.553309 | 61.412747 | -17.213629 |
+| B2_no_graph | 1 | all | 2022-10 | 2023-09 | 12 | 2.782302 | 5.348144 | -0.856000 |
+| B2_no_graph | 6 | all | 2022-10 | 2023-09 | 12 | 3.244826 | 6.792000 | -1.241602 |
+| B2_no_graph | 12 | all | 2022-10 | 2023-09 | 12 | 3.620204 | 8.345163 | -1.767745 |
+| B2_no_graph | total_12 | all | 2022-10 | 2023-09 | 12 | 25.674997 | 62.556384 | -16.444470 |
+| B2_shuffled | 1 | all | 2022-10 | 2023-09 | 12 | 2.750354 | 5.178192 | -0.499419 |
+| B2_shuffled | 6 | all | 2022-10 | 2023-09 | 12 | 3.224395 | 6.731361 | -1.293848 |
+| B2_shuffled | 12 | all | 2022-10 | 2023-09 | 12 | 3.624348 | 8.347148 | -1.795613 |
+| B2_shuffled | total_12 | all | 2022-10 | 2023-09 | 12 | 25.449055 | 61.558936 | -16.792660 |
+| B2_without_base | 1 | all | 2022-10 | 2023-09 | 12 | 2.782461 | 5.210255 | -0.437688 |
+| B2_without_base | 6 | all | 2022-10 | 2023-09 | 12 | 3.078974 | 6.037746 | -0.291171 |
+| B2_without_base | 12 | all | 2022-10 | 2023-09 | 12 | 3.447576 | 7.530719 | -0.748230 |
+| B2_without_base | total_12 | all | 2022-10 | 2023-09 | 12 | 22.024012 | 49.229327 | -5.016857 |
+| combination | 1 | all | 2022-10 | 2023-09 | 12 | 2.711184 | 5.011535 | -0.113891 |
+| combination | 6 | all | 2022-10 | 2023-09 | 12 | 3.034756 | 5.987517 | -0.094107 |
+| combination | 12 | all | 2022-10 | 2023-09 | 12 | 3.317804 | 7.064605 | -0.030402 |
+| combination | total_12 | all | 2022-10 | 2023-09 | 12 | 20.951119 | 48.339585 | -1.980640 |
+| combination_no_graph_sensitivity | 1 | all | 2022-10 | 2023-09 | 12 | 2.726298 | 5.074249 | -0.207203 |
+| combination_no_graph_sensitivity | 6 | all | 2022-10 | 2023-09 | 12 | 3.055471 | 6.025635 | -0.026258 |
+| combination_no_graph_sensitivity | 12 | all | 2022-10 | 2023-09 | 12 | 3.312396 | 7.076043 | -0.055412 |
+| combination_no_graph_sensitivity | total_12 | all | 2022-10 | 2023-09 | 12 | 21.236657 | 49.073577 | -1.827093 |
+| gradient_boosting_own | 1 | all | 2023-10 | 2024-09 | 12 | 2.999659 | 5.709214 | 0.999142 |
+| gradient_boosting_own | 6 | all | 2023-10 | 2024-09 | 12 | 3.445856 | 6.716488 | 1.652854 |
+| gradient_boosting_own | 12 | all | 2023-10 | 2024-09 | 12 | 4.132802 | 7.752601 | 2.922692 |
+| gradient_boosting_own | total_12 | all | 2023-10 | 2024-09 | 12 | 30.089729 | 59.071780 | 22.722514 |
+| gradient_boosting_neighbours | 1 | all | 2023-10 | 2024-09 | 12 | 2.999804 | 5.734991 | 0.967217 |
+| gradient_boosting_neighbours | 6 | all | 2023-10 | 2024-09 | 12 | 3.429719 | 6.695251 | 1.589277 |
+| gradient_boosting_neighbours | 12 | all | 2023-10 | 2024-09 | 12 | 4.099521 | 7.683753 | 2.878727 |
+| gradient_boosting_neighbours | total_12 | all | 2023-10 | 2024-09 | 12 | 29.754125 | 58.151064 | 22.093185 |
+| B2_real | 1 | all | 2023-10 | 2024-09 | 12 | 2.794729 | 5.568196 | -0.101947 |
+| B2_real | 6 | all | 2023-10 | 2024-09 | 12 | 3.014156 | 6.585211 | -0.174099 |
+| B2_real | 12 | all | 2023-10 | 2024-09 | 12 | 3.070821 | 6.754238 | 0.333307 |
+| B2_real | total_12 | all | 2023-10 | 2024-09 | 12 | 20.490744 | 52.155489 | 0.193606 |
+| B2_no_graph | 1 | all | 2023-10 | 2024-09 | 12 | 2.799986 | 5.539388 | -0.025461 |
+| B2_no_graph | 6 | all | 2023-10 | 2024-09 | 12 | 3.016234 | 6.629659 | -0.198247 |
+| B2_no_graph | 12 | all | 2023-10 | 2024-09 | 12 | 3.146114 | 6.817921 | 0.513837 |
+| B2_no_graph | total_12 | all | 2023-10 | 2024-09 | 12 | 20.809065 | 52.094511 | 0.982495 |
+| B2_shuffled | 1 | all | 2023-10 | 2024-09 | 12 | 2.786436 | 5.556640 | -0.161590 |
+| B2_shuffled | 6 | all | 2023-10 | 2024-09 | 12 | 3.058689 | 6.635127 | -0.133943 |
+| B2_shuffled | 12 | all | 2023-10 | 2024-09 | 12 | 3.006717 | 6.571529 | 0.189869 |
+| B2_shuffled | total_12 | all | 2023-10 | 2024-09 | 12 | 20.516768 | 51.289357 | 0.156060 |
+| B2_without_base | 1 | all | 2023-10 | 2024-09 | 12 | 2.827895 | 5.518743 | 0.242948 |
+| B2_without_base | 6 | all | 2023-10 | 2024-09 | 12 | 3.173903 | 6.494210 | 0.723768 |
+| B2_without_base | 12 | all | 2023-10 | 2024-09 | 12 | 3.475043 | 6.928156 | 1.696258 |
+| B2_without_base | total_12 | all | 2023-10 | 2024-09 | 12 | 23.374384 | 50.439090 | 11.293843 |
+| combination | 1 | all | 2023-10 | 2024-09 | 12 | 2.832350 | 5.492661 | 0.462198 |
+| combination | 6 | all | 2023-10 | 2024-09 | 12 | 3.182678 | 6.383413 | 1.027687 |
+| combination | 12 | all | 2023-10 | 2024-09 | 12 | 3.627564 | 6.905861 | 2.135980 |
+| combination | total_12 | all | 2023-10 | 2024-09 | 12 | 24.845561 | 51.004732 | 14.946228 |
+| combination_no_graph_sensitivity | 1 | all | 2023-10 | 2024-09 | 12 | 2.845950 | 5.504652 | 0.498461 |
+| combination_no_graph_sensitivity | 6 | all | 2023-10 | 2024-09 | 12 | 3.180669 | 6.384395 | 1.016906 |
+| combination_no_graph_sensitivity | 12 | all | 2023-10 | 2024-09 | 12 | 3.661384 | 6.948495 | 2.184132 |
+| combination_no_graph_sensitivity | total_12 | all | 2023-10 | 2024-09 | 12 | 24.961880 | 51.158080 | 15.151956 |
+
+![EXPLORATORY half scores](../../data/explore/t03/test_exploratory/exploratory_half_scores.png)
+
+### EXPLORATORY 7.2 Control claim checks
+
+Of **936** control/reference/metric/maturity/outcome cells, **124** are not strictly lower. Ties count as not lower. Percentage gain = 100(reference-candidate)/reference; undefined for zero reference. Checks cover all 12 monthly horizons and the total, all areas plus dynamic maturity terciles, MAE/MASE/RMSE. MASE denominators are inherited unchanged. The summary ranges below include the total; complete values and every flagged cell are supplied in the CSVs.
+
+| candidate | reference | metric | group | cells | not_lower_cells | minimum_gain_percent | maximum_gain_percent |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| B2_no_graph | gradient_boosting_neighbours | mae | all | 13 | 0 | 1.910436 | 11.218546 |
+| B2_no_graph | gradient_boosting_neighbours | mae | high | 13 | 0 | 0.847564 | 11.028537 |
+| B2_no_graph | gradient_boosting_neighbours | mae | low | 13 | 2 | -0.629787 | 5.266279 |
+| B2_no_graph | gradient_boosting_neighbours | mae | medium | 13 | 0 | 4.596310 | 18.098560 |
+| B2_no_graph | gradient_boosting_neighbours | mase | all | 13 | 0 | 1.802761 | 9.098994 |
+| B2_no_graph | gradient_boosting_neighbours | mase | high | 13 | 0 | 2.664635 | 14.574415 |
+| B2_no_graph | gradient_boosting_neighbours | mase | low | 13 | 5 | -11.043509 | 8.088710 |
+| B2_no_graph | gradient_boosting_neighbours | mase | medium | 13 | 0 | 4.274611 | 17.117888 |
+| B2_no_graph | gradient_boosting_neighbours | rmse | all | 13 | 12 | -6.585866 | 0.259905 |
+| B2_no_graph | gradient_boosting_neighbours | rmse | high | 13 | 12 | -7.312315 | 0.169733 |
+| B2_no_graph | gradient_boosting_neighbours | rmse | low | 13 | 3 | -0.423426 | 3.515232 |
+| B2_no_graph | gradient_boosting_neighbours | rmse | medium | 13 | 0 | 0.793168 | 8.045222 |
+| B2_no_graph | gradient_boosting_own | mae | all | 13 | 0 | 2.334504 | 12.001778 |
+| B2_no_graph | gradient_boosting_own | mae | high | 13 | 0 | 1.383024 | 11.366954 |
+| B2_no_graph | gradient_boosting_own | mae | low | 13 | 0 | 3.330514 | 11.384048 |
+| B2_no_graph | gradient_boosting_own | mae | medium | 13 | 0 | 4.271068 | 16.506831 |
+| B2_no_graph | gradient_boosting_own | mase | all | 13 | 0 | 6.803981 | 15.357302 |
+| B2_no_graph | gradient_boosting_own | mase | high | 13 | 0 | 2.827889 | 14.952541 |
+| B2_no_graph | gradient_boosting_own | mase | low | 13 | 0 | 1.332629 | 15.456231 |
+| B2_no_graph | gradient_boosting_own | mase | medium | 13 | 0 | 3.999718 | 15.623387 |
+| B2_no_graph | gradient_boosting_own | rmse | all | 13 | 12 | -6.244662 | 0.384030 |
+| B2_no_graph | gradient_boosting_own | rmse | high | 13 | 12 | -6.895843 | 0.313178 |
+| B2_no_graph | gradient_boosting_own | rmse | low | 13 | 0 | 1.423643 | 8.805251 |
+| B2_no_graph | gradient_boosting_own | rmse | medium | 13 | 0 | 0.559553 | 6.956283 |
+| B2_shuffled | gradient_boosting_neighbours | mae | all | 13 | 0 | 1.935061 | 12.208347 |
+| B2_shuffled | gradient_boosting_neighbours | mae | high | 13 | 0 | 0.976288 | 12.888718 |
+| B2_shuffled | gradient_boosting_neighbours | mae | low | 13 | 2 | -0.810746 | 3.080878 |
+| B2_shuffled | gradient_boosting_neighbours | mae | medium | 13 | 0 | 4.897205 | 19.015867 |
+| B2_shuffled | gradient_boosting_neighbours | mase | all | 13 | 0 | 1.533429 | 8.000635 |
+| B2_shuffled | gradient_boosting_neighbours | mase | high | 13 | 0 | 2.704593 | 15.596796 |
+| B2_shuffled | gradient_boosting_neighbours | mase | low | 13 | 8 | -11.533571 | 6.548989 |
+| B2_shuffled | gradient_boosting_neighbours | mase | medium | 13 | 0 | 4.524107 | 18.192769 |
+| B2_shuffled | gradient_boosting_neighbours | rmse | all | 13 | 12 | -6.672207 | 1.612869 |
+| B2_shuffled | gradient_boosting_neighbours | rmse | high | 13 | 12 | -7.299879 | 1.631208 |
+| B2_shuffled | gradient_boosting_neighbours | rmse | low | 13 | 1 | -0.160677 | 3.054794 |
+| B2_shuffled | gradient_boosting_neighbours | rmse | medium | 13 | 0 | 0.665586 | 8.009411 |
+| B2_shuffled | gradient_boosting_own | mae | all | 13 | 0 | 2.359023 | 12.982848 |
+| B2_shuffled | gradient_boosting_own | mae | high | 13 | 0 | 1.511053 | 13.220059 |
+| B2_shuffled | gradient_boosting_own | mae | low | 13 | 0 | 3.156676 | 9.339777 |
+| B2_shuffled | gradient_boosting_own | mae | medium | 13 | 0 | 4.529142 | 17.441966 |
+| B2_shuffled | gradient_boosting_own | mase | all | 13 | 0 | 6.548366 | 14.334562 |
+| B2_shuffled | gradient_boosting_own | mase | high | 13 | 0 | 2.867780 | 15.970396 |
+| B2_shuffled | gradient_boosting_own | mase | low | 13 | 0 | 0.897186 | 13.321529 |
+| B2_shuffled | gradient_boosting_own | mase | medium | 13 | 0 | 4.249930 | 16.717650 |
+| B2_shuffled | gradient_boosting_own | rmse | all | 13 | 12 | -6.618700 | 1.735310 |
+| B2_shuffled | gradient_boosting_own | rmse | high | 13 | 12 | -7.244928 | 1.772553 |
+| B2_shuffled | gradient_boosting_own | rmse | low | 13 | 0 | 1.370792 | 8.370058 |
+| B2_shuffled | gradient_boosting_own | rmse | medium | 13 | 0 | 0.446942 | 6.920048 |
+| B2_without_base | gradient_boosting_neighbours | mae | all | 13 | 0 | 3.398949 | 13.292093 |
+| B2_without_base | gradient_boosting_neighbours | mae | high | 13 | 0 | 2.872164 | 12.145694 |
+| B2_without_base | gradient_boosting_neighbours | mae | low | 13 | 0 | 2.106450 | 7.024151 |
+| B2_without_base | gradient_boosting_neighbours | mae | medium | 13 | 0 | 4.408329 | 19.414880 |
+| B2_without_base | gradient_boosting_neighbours | mase | all | 13 | 0 | 2.493886 | 10.001810 |
+| B2_without_base | gradient_boosting_neighbours | mase | high | 13 | 0 | 3.813491 | 15.534876 |
+| B2_without_base | gradient_boosting_neighbours | mase | low | 13 | 5 | -7.920468 | 9.333704 |
+| B2_without_base | gradient_boosting_neighbours | mase | medium | 13 | 0 | 4.147599 | 18.335110 |
+| B2_without_base | gradient_boosting_neighbours | rmse | all | 13 | 1 | -0.106214 | 7.719249 |
+| B2_without_base | gradient_boosting_neighbours | rmse | high | 13 | 1 | -0.209101 | 7.564755 |
+| B2_without_base | gradient_boosting_neighbours | rmse | low | 13 | 0 | 0.212713 | 2.975357 |
+| B2_without_base | gradient_boosting_neighbours | rmse | medium | 13 | 0 | 0.831123 | 11.163599 |
+| B2_without_base | gradient_boosting_own | mae | all | 13 | 0 | 3.976902 | 14.057033 |
+| B2_without_base | gradient_boosting_own | mae | high | 13 | 0 | 3.618943 | 13.201232 |
+| B2_without_base | gradient_boosting_own | mae | low | 13 | 0 | 5.384078 | 13.028398 |
+| B2_without_base | gradient_boosting_own | mae | medium | 13 | 0 | 4.082446 | 17.848733 |
+| B2_without_base | gradient_boosting_own | mase | all | 13 | 0 | 7.634293 | 16.197962 |
+| B2_without_base | gradient_boosting_own | mase | high | 13 | 0 | 4.094799 | 15.908750 |
+| B2_without_base | gradient_boosting_own | mase | low | 13 | 0 | 4.107598 | 16.022572 |
+| B2_without_base | gradient_boosting_own | mase | medium | 13 | 0 | 3.872340 | 16.862557 |
+| B2_without_base | gradient_boosting_own | rmse | all | 13 | 0 | 0.237070 | 8.216693 |
+| B2_without_base | gradient_boosting_own | rmse | high | 13 | 0 | 0.176874 | 8.124242 |
+| B2_without_base | gradient_boosting_own | rmse | low | 13 | 0 | 1.310199 | 8.294977 |
+| B2_without_base | gradient_boosting_own | rmse | medium | 13 | 0 | 0.689482 | 10.111588 |
+
+- [EXPLORATORY exploratory_half_scores CSV](../../data/explore/t03/test_exploratory/exploratory_half_scores.csv)
+- [EXPLORATORY exploratory_control_claim_checks CSV](../../data/explore/t03/test_exploratory/exploratory_control_claim_checks.csv)
+- [EXPLORATORY exploratory_control_claim_flags CSV](../../data/explore/t03/test_exploratory/exploratory_control_claim_flags.csv)
+- [EXPLORATORY exploratory_control_claim_summary CSV](../../data/explore/t03/test_exploratory/exploratory_control_claim_summary.csv)
+
+Generators: `evaluation.test_exploratory_halves`, `visuals.test_exploratory_halves`. Log: `logs/t03_test_exploratory_halves.log`. [EXPLORATORY provenance](../../data/explore/t03/test_exploratory/exploratory_halves_provenance.json).
+
 ## EXPLORATORY complete outputs and provenance
 
 Generator: `evaluation.test_exploratory`; visual generator: `visuals.test_exploratory`. Log: `logs/t03_test_exploratory.log`. Every CSV has an explicit exploratory scope column. No frozen or confirmatory artifact is overwritten.
