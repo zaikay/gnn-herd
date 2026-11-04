@@ -1,0 +1,54 @@
+{
+  "evaluation_completed_at": "2026-11-04T14:33:42.849055+00:00",
+  "models": [
+    {
+      "model": "B2_no_graph",
+      "fits": 24,
+      "origins": 24,
+      "fit_hours": 3.537226841111163,
+      "completed_at": "2026-11-04T10:50:34.897080+00:00"
+    },
+    {
+      "model": "B2_real",
+      "fits": 24,
+      "origins": 24,
+      "fit_hours": 3.560832610083356,
+      "completed_at": "2026-11-03T22:29:15.984199+00:00"
+    },
+    {
+      "model": "B2_shuffled",
+      "fits": 24,
+      "origins": 24,
+      "fit_hours": 3.2517533558332232,
+      "completed_at": "2026-11-04T01:57:40.658055+00:00"
+    },
+    {
+      "model": "B2_without_base",
+      "fits": 24,
+      "origins": 24,
+      "fit_hours": 2.9688724703055533,
+      "completed_at": "2026-11-04T14:07:47.115284+00:00"
+    },
+    {
+      "model": "gradient_boosting_neighbours",
+      "fits": 24,
+      "origins": 24,
+      "fit_hours": 1.0121090051944095,
+      "completed_at": "2026-11-03T15:31:32.070283+00:00"
+    },
+    {
+      "model": "gradient_boosting_own",
+      "fits": 24,
+      "origins": 24,
+      "fit_hours": 0.506592293277758,
+      "completed_at": "2026-11-03T14:30:08.533698+00:00"
+    }
+  ],
+  "checks": {
+    "forecast_sha256": 18,
+    "artifact_sha256": 22
+  },
+  "scope": "Metadata, fit records and saved evaluation/forecast hashes only; no target access, scoring, tests or fitting.",
+  "total_fits": 144,
+  "total_fit_hours": 14.837386575805462
+}
