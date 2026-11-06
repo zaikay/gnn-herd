@@ -459,6 +459,163 @@ Of **936** control/reference/metric/maturity/outcome cells, **124** are not stri
 
 Generators: `evaluation.test_exploratory_halves`, `visuals.test_exploratory_halves`. Log: `logs/t03_test_exploratory_halves.log`. [EXPLORATORY provenance](../../data/explore/t03/test_exploratory/exploratory_halves_provenance.json).
 
+## EXPLORATORY 8. Frozen-weight hybrid sensitivities
+
+5 November 2026. EXPLORATORY post-test sensitivity, no fits or weight estimation. New hybrid = w times neighbour boosting ensemble + (1-w) times B2 without-installed-base ensemble. The same nine frozen six-decimal weights and origin-dependent maturity/bands are used in all three hybrid versions. Three seed forecasts are averaged before mixing/scoring. No confirmatory result, model choice or testing chain changes.
+
+### EXPLORATORY 8.1 Frozen weights and scoring
+
+| maturity | band | boosting_weight | network_weight |
+| --- | --- | --- | --- |
+| low | 1-3 | 0.100818 | 0.899182 |
+| low | 4-6 | 0.486487 | 0.513513 |
+| low | 7-12 | 0.780161 | 0.219839 |
+| medium | 1-3 | 0.687581 | 0.312419 |
+| medium | 4-6 | 0.784779 | 0.215221 |
+| medium | 7-12 | 0.831918 | 0.168082 |
+| high | 1-3 | 0.492785 | 0.507215 |
+| high | 4-6 | 0.659162 | 0.340838 |
+| high | 7-12 | 0.682345 | 0.317655 |
+
+Every horizon 1-12 and the twelve-month total, all areas and each dynamic maturity tercile, are scored for the full test and both twelve-origin halves. MAE/MASE/signed errors average equal-area origin losses; RMSE roots pooled MSE. Total MASE divides by twelve times the monthly training scale. Monthly MAE/RMSE/signed-error units are systems/area/month; total units systems/area/twelve-month window; MASE is unitless. Halves split origins, so target windows overlap. Saved forecasts are unchanged; only already-evaluated targets through September 2025 are reread for the new mixture. Main and no-graph hybrids reproduce all four saved origin-level loss columns within 1e-10 tolerance.
+
+EXPLORATORY all-area overview, horizons 1,6,12,total (complete monthly/maturity scores linked below):
+
+| period | model | outcome | mae | mase | rmse | mean_signed_error |
+| --- | --- | --- | --- | --- | --- | --- |
+| full_test | combination | 1 | 2.771767 | 0.879191 | 5.257605 | 0.174154 |
+| full_test | combination | 12 | 3.472684 | 1.017065 | 6.985684 | 1.052789 |
+| full_test | combination | 6 | 3.108717 | 0.953332 | 6.188631 | 0.466790 |
+| full_test | combination | total_12 | 22.898340 | 0.529339 | 49.690030 | 6.482794 |
+| full_test | combination_no_graph_sensitivity | 1 | 2.786124 | 0.879863 | 5.293826 | 0.145629 |
+| full_test | combination_no_graph_sensitivity | 12 | 3.486890 | 1.024320 | 7.012559 | 1.064360 |
+| full_test | combination_no_graph_sensitivity | 6 | 3.118070 | 0.952191 | 6.207607 | 0.495324 |
+| full_test | combination_no_graph_sensitivity | total_12 | 23.099269 | 0.531954 | 50.126665 | 6.662432 |
+| full_test | combination_without_base_sensitivity | 1 | 2.807830 | 0.876822 | 5.282240 | 0.315789 |
+| full_test | combination_without_base_sensitivity | 12 | 3.621011 | 1.035391 | 7.153563 | 1.410549 |
+| full_test | combination_without_base_sensitivity | 6 | 3.174644 | 0.959004 | 6.191198 | 0.807948 |
+| full_test | combination_without_base_sensitivity | total_12 | 24.106345 | 0.542073 | 50.147558 | 10.388070 |
+| first_half | combination | 1 | 2.711184 | 0.875461 | 5.011535 | -0.113891 |
+| first_half | combination | 12 | 3.317804 | 1.000092 | 7.064605 | -0.030402 |
+| first_half | combination | 6 | 3.034756 | 0.950017 | 5.987517 | -0.094107 |
+| first_half | combination | total_12 | 20.951119 | 0.500458 | 48.339585 | -1.980640 |
+| first_half | combination_no_graph_sensitivity | 1 | 2.726298 | 0.870450 | 5.074249 | -0.207203 |
+| first_half | combination_no_graph_sensitivity | 12 | 3.312396 | 1.002213 | 7.076043 | -0.055412 |
+| first_half | combination_no_graph_sensitivity | 6 | 3.055471 | 0.944660 | 6.025635 | -0.026258 |
+| first_half | combination_no_graph_sensitivity | total_12 | 21.236657 | 0.501402 | 49.073577 | -1.827093 |
+| first_half | combination_without_base_sensitivity | 1 | 2.749933 | 0.872001 | 5.061253 | 0.001111 |
+| first_half | combination_without_base_sensitivity | 12 | 3.371098 | 1.005995 | 7.029408 | 0.265555 |
+| first_half | combination_without_base_sensitivity | 6 | 3.056886 | 0.947019 | 5.891650 | 0.291588 |
+| first_half | combination_without_base_sensitivity | total_12 | 21.186661 | 0.503051 | 46.778676 | 2.133357 |
+| second_half | combination | 1 | 2.832350 | 0.882921 | 5.492661 | 0.462198 |
+| second_half | combination | 12 | 3.627564 | 1.034037 | 6.905861 | 2.135980 |
+| second_half | combination | 6 | 3.182678 | 0.956646 | 6.383413 | 1.027687 |
+| second_half | combination | total_12 | 24.845561 | 0.558219 | 51.004732 | 14.946228 |
+| second_half | combination_no_graph_sensitivity | 1 | 2.845950 | 0.889276 | 5.504652 | 0.498461 |
+| second_half | combination_no_graph_sensitivity | 12 | 3.661384 | 1.046428 | 6.948495 | 2.184132 |
+| second_half | combination_no_graph_sensitivity | 6 | 3.180669 | 0.959723 | 6.384395 | 1.016906 |
+| second_half | combination_no_graph_sensitivity | total_12 | 24.961880 | 0.562507 | 51.158080 | 15.151956 |
+| second_half | combination_without_base_sensitivity | 1 | 2.865727 | 0.881643 | 5.494346 | 0.630466 |
+| second_half | combination_without_base_sensitivity | 12 | 3.870924 | 1.064787 | 7.275598 | 2.555542 |
+| second_half | combination_without_base_sensitivity | 6 | 3.292403 | 0.970988 | 6.476907 | 1.324308 |
+| second_half | combination_without_base_sensitivity | total_12 | 27.026030 | 0.581095 | 53.303946 | 18.642783 |
+
+![EXPLORATORY hybrid sensitivities](../../data/explore/t03/test_exploratory/exploratory_hybrid_sensitivities.png)
+
+### EXPLORATORY 8.2 Claim checks
+
+For the two sensitivity hybrids against both boosting ensembles, **55 of 1872** metric/reference/maturity/outcome/period cells are not strictly lower. Ties are flagged. All flagged cells are supplied separately. These include full-test and both half-period checks; no p-values or new significance tests are computed. Percentage gain = 100(reference-candidate)/reference, undefined for zero reference.
+
+| period | candidate | reference | metric | cells | not_lower_cells |
+| --- | --- | --- | --- | --- | --- |
+| first_half | combination_no_graph_sensitivity | gradient_boosting_neighbours | mae | 52 | 0 |
+| first_half | combination_no_graph_sensitivity | gradient_boosting_neighbours | mase | 52 | 4 |
+| first_half | combination_no_graph_sensitivity | gradient_boosting_neighbours | rmse | 52 | 7 |
+| first_half | combination_no_graph_sensitivity | gradient_boosting_own | mae | 52 | 0 |
+| first_half | combination_no_graph_sensitivity | gradient_boosting_own | mase | 52 | 0 |
+| first_half | combination_no_graph_sensitivity | gradient_boosting_own | rmse | 52 | 14 |
+| first_half | combination_without_base_sensitivity | gradient_boosting_neighbours | mae | 52 | 0 |
+| first_half | combination_without_base_sensitivity | gradient_boosting_neighbours | mase | 52 | 3 |
+| first_half | combination_without_base_sensitivity | gradient_boosting_neighbours | rmse | 52 | 3 |
+| first_half | combination_without_base_sensitivity | gradient_boosting_own | mae | 52 | 0 |
+| first_half | combination_without_base_sensitivity | gradient_boosting_own | mase | 52 | 0 |
+| first_half | combination_without_base_sensitivity | gradient_boosting_own | rmse | 52 | 2 |
+| full_test | combination_no_graph_sensitivity | gradient_boosting_neighbours | mae | 52 | 0 |
+| full_test | combination_no_graph_sensitivity | gradient_boosting_neighbours | mase | 52 | 5 |
+| full_test | combination_no_graph_sensitivity | gradient_boosting_neighbours | rmse | 52 | 0 |
+| full_test | combination_no_graph_sensitivity | gradient_boosting_own | mae | 52 | 0 |
+| full_test | combination_no_graph_sensitivity | gradient_boosting_own | mase | 52 | 0 |
+| full_test | combination_no_graph_sensitivity | gradient_boosting_own | rmse | 52 | 0 |
+| full_test | combination_without_base_sensitivity | gradient_boosting_neighbours | mae | 52 | 0 |
+| full_test | combination_without_base_sensitivity | gradient_boosting_neighbours | mase | 52 | 5 |
+| full_test | combination_without_base_sensitivity | gradient_boosting_neighbours | rmse | 52 | 0 |
+| full_test | combination_without_base_sensitivity | gradient_boosting_own | mae | 52 | 0 |
+| full_test | combination_without_base_sensitivity | gradient_boosting_own | mase | 52 | 0 |
+| full_test | combination_without_base_sensitivity | gradient_boosting_own | rmse | 52 | 0 |
+| second_half | combination_no_graph_sensitivity | gradient_boosting_neighbours | mae | 52 | 0 |
+| second_half | combination_no_graph_sensitivity | gradient_boosting_neighbours | mase | 52 | 6 |
+| second_half | combination_no_graph_sensitivity | gradient_boosting_neighbours | rmse | 52 | 0 |
+| second_half | combination_no_graph_sensitivity | gradient_boosting_own | mae | 52 | 0 |
+| second_half | combination_no_graph_sensitivity | gradient_boosting_own | mase | 52 | 0 |
+| second_half | combination_no_graph_sensitivity | gradient_boosting_own | rmse | 52 | 0 |
+| second_half | combination_without_base_sensitivity | gradient_boosting_neighbours | mae | 52 | 0 |
+| second_half | combination_without_base_sensitivity | gradient_boosting_neighbours | mase | 52 | 6 |
+| second_half | combination_without_base_sensitivity | gradient_boosting_neighbours | rmse | 52 | 0 |
+| second_half | combination_without_base_sensitivity | gradient_boosting_own | mae | 52 | 0 |
+| second_half | combination_without_base_sensitivity | gradient_boosting_own | mase | 52 | 0 |
+| second_half | combination_without_base_sensitivity | gradient_boosting_own | rmse | 52 | 0 |
+
+### EXPLORATORY 8.3 Each hybrid against its own network
+
+Positive gains indicate lower hybrid error. The table shows full-test all-area values at 1,6,12,total; the complete CSV covers all horizons, maturity groups and both halves, and includes signed errors for each member.
+
+| candidate | reference | outcome | group | metric | candidate_loss | reference_loss | gain_percent | not_lower | period | hybrid_signed_error | network_signed_error |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| combination | B2_real | 1 | all | mae | 2.771767 | 2.761449 | -0.373654 | True | full_test | 0.174154 | -0.385369 |
+| combination | B2_real | 1 | all | mase | 0.879191 | 0.869120 | -1.158710 | True | full_test | 0.174154 | -0.385369 |
+| combination | B2_real | 1 | all | rmse | 5.257605 | 5.375454 | 2.192352 | False | full_test | 0.174154 | -0.385369 |
+| combination | B2_real | 12 | all | mae | 3.472684 | 3.334618 | -4.140385 | True | full_test | 1.052789 | -0.683736 |
+| combination | B2_real | 12 | all | mase | 1.017065 | 1.004167 | -1.284445 | True | full_test | 1.052789 | -0.683736 |
+| combination | B2_real | 12 | all | rmse | 6.985684 | 7.521697 | 7.126228 | False | full_test | 1.052789 | -0.683736 |
+| combination | B2_real | 6 | all | mae | 3.108717 | 3.133856 | 0.802165 | False | full_test | 0.466790 | -0.817236 |
+| combination | B2_real | 6 | all | mase | 0.953332 | 0.943969 | -0.991838 | True | full_test | 0.466790 | -0.817236 |
+| combination | B2_real | 6 | all | rmse | 6.188631 | 6.688695 | 7.476247 | False | full_test | 0.466790 | -0.817236 |
+| combination | B2_real | total_12 | all | mae | 22.898340 | 23.022026 | 0.537251 | False | full_test | 6.482794 | -8.510011 |
+| combination | B2_real | total_12 | all | mase | 0.529339 | 0.519302 | -1.932769 | True | full_test | 6.482794 | -8.510011 |
+| combination | B2_real | total_12 | all | rmse | 49.690030 | 56.972452 | 12.782356 | False | full_test | 6.482794 | -8.510011 |
+| combination_no_graph_sensitivity | B2_no_graph | 1 | all | mae | 2.786124 | 2.791144 | 0.179843 | False | full_test | 0.145629 | -0.440730 |
+| combination_no_graph_sensitivity | B2_no_graph | 1 | all | mase | 0.879863 | 0.872477 | -0.846540 | True | full_test | 0.145629 | -0.440730 |
+| combination_no_graph_sensitivity | B2_no_graph | 1 | all | rmse | 5.293826 | 5.444606 | 2.769339 | False | full_test | 0.145629 | -0.440730 |
+| combination_no_graph_sensitivity | B2_no_graph | 12 | all | mae | 3.486890 | 3.383159 | -3.066104 | True | full_test | 1.064360 | -0.626954 |
+| combination_no_graph_sensitivity | B2_no_graph | 12 | all | mase | 1.024320 | 1.032985 | 0.838808 | False | full_test | 1.064360 | -0.626954 |
+| combination_no_graph_sensitivity | B2_no_graph | 12 | all | rmse | 7.012559 | 7.619901 | 7.970469 | False | full_test | 1.064360 | -0.626954 |
+| combination_no_graph_sensitivity | B2_no_graph | 6 | all | mae | 3.118070 | 3.130530 | 0.398015 | False | full_test | 0.495324 | -0.719925 |
+| combination_no_graph_sensitivity | B2_no_graph | 6 | all | mase | 0.952191 | 0.938473 | -1.461715 | True | full_test | 0.495324 | -0.719925 |
+| combination_no_graph_sensitivity | B2_no_graph | 6 | all | rmse | 6.207607 | 6.711321 | 7.505427 | False | full_test | 0.495324 | -0.719925 |
+| combination_no_graph_sensitivity | B2_no_graph | total_12 | all | mae | 23.099269 | 23.242031 | 0.614240 | False | full_test | 6.662432 | -7.730987 |
+| combination_no_graph_sensitivity | B2_no_graph | total_12 | all | mase | 0.531954 | 0.524514 | -1.418467 | True | full_test | 6.662432 | -7.730987 |
+| combination_no_graph_sensitivity | B2_no_graph | total_12 | all | rmse | 50.126665 | 57.563614 | 12.919531 | False | full_test | 6.662432 | -7.730987 |
+| combination_without_base_sensitivity | B2_without_base | 1 | all | mae | 2.807830 | 2.805178 | -0.094537 | True | full_test | 0.315789 | -0.097370 |
+| combination_without_base_sensitivity | B2_without_base | 1 | all | mase | 0.876822 | 0.868412 | -0.968428 | True | full_test | 0.315789 | -0.097370 |
+| combination_without_base_sensitivity | B2_without_base | 1 | all | rmse | 5.282240 | 5.366716 | 1.574072 | False | full_test | 0.315789 | -0.097370 |
+| combination_without_base_sensitivity | B2_without_base | 12 | all | mae | 3.621011 | 3.461310 | -4.613890 | True | full_test | 1.410549 | 0.474014 |
+| combination_without_base_sensitivity | B2_without_base | 12 | all | mase | 1.035391 | 1.026493 | -0.866822 | True | full_test | 1.410549 | 0.474014 |
+| combination_without_base_sensitivity | B2_without_base | 12 | all | rmse | 7.153563 | 7.235713 | 1.135346 | False | full_test | 1.410549 | 0.474014 |
+| combination_without_base_sensitivity | B2_without_base | 6 | all | mae | 3.174644 | 3.126439 | -1.541873 | True | full_test | 0.807948 | 0.216298 |
+| combination_without_base_sensitivity | B2_without_base | 6 | all | mase | 0.959004 | 0.939663 | -2.058237 | True | full_test | 0.807948 | 0.216298 |
+| combination_without_base_sensitivity | B2_without_base | 6 | all | rmse | 6.191198 | 6.270133 | 1.258911 | False | full_test | 0.807948 | 0.216298 |
+| combination_without_base_sensitivity | B2_without_base | total_12 | all | mae | 24.106345 | 22.699198 | -6.199106 | True | full_test | 10.388070 | 3.138493 |
+| combination_without_base_sensitivity | B2_without_base | total_12 | all | mase | 0.542073 | 0.519305 | -4.384323 | True | full_test | 10.388070 | 3.138493 |
+| combination_without_base_sensitivity | B2_without_base | total_12 | all | rmse | 50.147558 | 49.837879 | -0.621373 | True | full_test | 10.388070 | 3.138493 |
+
+- [EXPLORATORY exploratory_hybrid_sensitivity_scores](../../data/explore/t03/test_exploratory/exploratory_hybrid_sensitivity_scores.csv)
+- [EXPLORATORY exploratory_hybrid_sensitivity_claims](../../data/explore/t03/test_exploratory/exploratory_hybrid_sensitivity_claims.csv)
+- [EXPLORATORY exploratory_hybrid_sensitivity_flags](../../data/explore/t03/test_exploratory/exploratory_hybrid_sensitivity_flags.csv)
+- [EXPLORATORY exploratory_hybrid_sensitivity_summary](../../data/explore/t03/test_exploratory/exploratory_hybrid_sensitivity_summary.csv)
+- [EXPLORATORY exploratory_hybrid_network_comparison](../../data/explore/t03/test_exploratory/exploratory_hybrid_network_comparison.csv)
+
+[EXPLORATORY exact weights](../../data/explore/t03/test_exploratory/exploratory_sensitivity_frozen_weights.csv). [EXPLORATORY provenance](../../data/explore/t03/test_exploratory/exploratory_hybrid_sensitivity_provenance.json). Generators: `evaluation.test_exploratory_hybrids`, `visuals.test_exploratory_hybrids`; log `logs/t03_test_exploratory_hybrids.log`.
+
 ## EXPLORATORY complete outputs and provenance
 
 Generator: `evaluation.test_exploratory`; visual generator: `visuals.test_exploratory`. Log: `logs/t03_test_exploratory.log`. Every CSV has an explicit exploratory scope column. No frozen or confirmatory artifact is overwritten.
