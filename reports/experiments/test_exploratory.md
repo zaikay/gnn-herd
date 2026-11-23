@@ -616,6 +616,91 @@ Positive gains indicate lower hybrid error. The table shows full-test all-area v
 
 [EXPLORATORY exact weights](../../data/explore/t03/test_exploratory/exploratory_sensitivity_frozen_weights.csv). [EXPLORATORY provenance](../../data/explore/t03/test_exploratory/exploratory_hybrid_sensitivity_provenance.json). Generators: `evaluation.test_exploratory_hybrids`, `visuals.test_exploratory_hybrids`; log `logs/t03_test_exploratory_hybrids.log`.
 
+## EXPLORATORY 9. Robustness and area-level error offsets
+
+### EXPLORATORY predictions recorded before analysis
+
+- P1. The share of cases where the two members' errors have opposite signs is larger in the first half than in the second half for the main hybrid.
+- P2. That share is smaller for the hybrid built on B2 without installed base than for the main hybrid.
+- P3. The gain from cancelling errors is a larger part of the main hybrid's gain over neighbour boosting in the first half than in the second half.
+
+### EXPLORATORY results
+
+23 November 2026. EXPLORATORY. All 22 confirmatory artifact hashes matched before and after.
+
+The six-model reproduction matched all supplied counts and rounded gains. The table shows cells at or above the better boosting score, minimum percentage gain, and all-area worst-half wins out of 13 outcomes per metric.
+
+| model | cells | not_lower_cells | min_gain_percent | period | metric |
+| --- | --- | --- | --- | --- | --- |
+| combination | 468 | 25 | -1.461012 | all_periods | all_metrics |
+| B2_without_base | 468 | 66 | -11.447606 | all_periods | all_metrics |
+| B2_real | 468 | 136 | -25.832358 | all_periods | all_metrics |
+| B2_no_graph | 468 | 145 | -28.317584 | all_periods | all_metrics |
+
+| metric | B2_no_graph | B2_real | B2_without_base | combination | gradient_boosting_neighbours | gradient_boosting_own |
+| --- | --- | --- | --- | --- | --- | --- |
+| mae | 1 | 2 | 9 | 1 | 0 | 0 |
+| mase | 0 | 0 | 13 | 0 | 0 | 0 |
+| rmse | 0 | 0 | 3 | 10 | 0 | 0 |
+
+The full roster uses 468 cells per model. Ties count as at or above boosting and share worst-half wins. The full test overlaps both halves. Ratios are maxima across half-period cells and use the lowest loss in the scored roster as denominator. The all-groups maxima include all areas and the three maturity terciles.
+
+| model | cells | not_lower_cells | min_gain_percent | wins_mae | wins_mase | wins_rmse | all_areas_mae_ratio | all_areas_mase_ratio | all_areas_rmse_ratio | all_groups_mae_ratio | all_groups_mase_ratio | all_groups_rmse_ratio |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B2_no_graph | 468 | 145 | -28.317584 | 1 | 0 | 0 | 1.225471 | 1.092221 | 1.337284 | 1.279805 | 1.275554 | 1.346955 |
+| B2_real | 468 | 136 | -25.832358 | 1 | 0 | 0 | 1.219663 | 1.101220 | 1.312836 | 1.270648 | 1.269837 | 1.320868 |
+| B2_shuffled | 468 | 154 | -26.182526 | 1 | 0 | 0 | 1.214687 | 1.119693 | 1.315961 | 1.263220 | 1.264415 | 1.324543 |
+| B2_without_base | 468 | 66 | -11.447606 | 9 | 13 | 3 | 1.155760 | 1.079697 | 1.072833 | 1.201292 | 1.212433 | 1.077523 |
+| combination | 468 | 25 | -1.461012 | 1 | 0 | 10 | 1.212526 | 1.145091 | 1.050876 | 1.367968 | 1.338227 | 1.183110 |
+| combination_no_graph_sensitivity | 468 | 31 | -3.040472 | 0 | 0 | 0 | 1.218203 | 1.153886 | 1.057364 | 1.378315 | 1.347636 | 1.191449 |
+| combination_without_base_sensitivity | 468 | 19 | -2.373901 | 0 | 0 | 0 | 1.318938 | 1.192017 | 1.107139 | 1.398363 | 1.425733 | 1.210924 |
+| gradient_boosting_neighbours | 468 | 468 | -2.482970 | 0 | 0 | 0 | 1.452076 | 1.281448 | 1.169249 | 1.528167 | 1.603234 | 1.300503 |
+| gradient_boosting_own | 468 | 468 | -18.783465 | 0 | 0 | 0 | 1.468455 | 1.362644 | 1.179726 | 1.491142 | 1.612623 | 1.281008 |
+
+Opposite-sign and zero shares use all area–origin–horizon cases in each slice. Correlation is Pearson correlation over those cases. Gains use equal areas within each origin and equal origins and horizons within each slice. Units are systems per area per month. For own-lag boosting, the weighting entry includes the difference between own-lag and neighbour absolute errors, and the cancellation term uses the original hybrid members. The CSV shows both weighting components. The case and aggregate identities passed absolute tolerance 1e-10.
+
+| model | reference | period | opposite_share | zero_share | correlation | weighting_gain | cancelling_gain | mae_gain |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| combination | gradient_boosting_neighbours | full_test | 0.128209 | 0.000000 | 0.814936 | 0.065283 | 0.135638 | 0.200922 |
+| combination | gradient_boosting_neighbours | first_half | 0.135833 | 0.000000 | 0.821572 | -0.035834 | 0.149386 | 0.113551 |
+| combination | gradient_boosting_neighbours | second_half | 0.120584 | 0.000000 | 0.806176 | 0.166401 | 0.121891 | 0.288292 |
+| combination | gradient_boosting_own | full_test | 0.128209 | 0.000000 | 0.814936 | 0.086257 | 0.135638 | 0.221895 |
+| combination | gradient_boosting_own | first_half | 0.135833 | 0.000000 | 0.821572 | -0.016686 | 0.149386 | 0.132700 |
+| combination | gradient_boosting_own | second_half | 0.120584 | 0.000000 | 0.806176 | 0.189200 | 0.121891 | 0.311091 |
+| combination_no_graph_sensitivity | gradient_boosting_neighbours | full_test | 0.119780 | 0.000000 | 0.821703 | 0.059840 | 0.127716 | 0.187556 |
+| combination_no_graph_sensitivity | gradient_boosting_neighbours | first_half | 0.127207 | 0.000000 | 0.828490 | -0.041031 | 0.140667 | 0.099636 |
+| combination_no_graph_sensitivity | gradient_boosting_neighbours | second_half | 0.112353 | 0.000000 | 0.813439 | 0.160712 | 0.114766 | 0.275477 |
+| combination_no_graph_sensitivity | gradient_boosting_own | full_test | 0.119780 | 0.000000 | 0.821703 | 0.080813 | 0.127716 | 0.208530 |
+| combination_no_graph_sensitivity | gradient_boosting_own | first_half | 0.127207 | 0.000000 | 0.828490 | -0.021883 | 0.140667 | 0.118784 |
+| combination_no_graph_sensitivity | gradient_boosting_own | second_half | 0.112353 | 0.000000 | 0.813439 | 0.183510 | 0.114766 | 0.298276 |
+| combination_without_base_sensitivity | gradient_boosting_neighbours | full_test | 0.095996 | 0.000000 | 0.893774 | 0.058775 | 0.062494 | 0.121269 |
+| combination_without_base_sensitivity | gradient_boosting_neighbours | first_half | 0.102511 | 0.000000 | 0.887539 | 0.014746 | 0.071395 | 0.086142 |
+| combination_without_base_sensitivity | gradient_boosting_neighbours | second_half | 0.089482 | 0.000000 | 0.897630 | 0.102805 | 0.053592 | 0.156397 |
+| combination_without_base_sensitivity | gradient_boosting_own | full_test | 0.095996 | 0.000000 | 0.893774 | 0.079749 | 0.062494 | 0.142243 |
+| combination_without_base_sensitivity | gradient_boosting_own | first_half | 0.102511 | 0.000000 | 0.887539 | 0.033895 | 0.071395 | 0.105290 |
+| combination_without_base_sensitivity | gradient_boosting_own | second_half | 0.089482 | 0.000000 | 0.897630 | 0.125603 | 0.053592 | 0.179195 |
+
+- P1. Agrees. 13.58% versus 12.06%.
+- P2. Agrees. 9.60% versus 12.82%.
+- P3. Agrees. 131.56% versus 42.28%.
+
+P1 and P3 compare first half to second half. P2 compares the without-base hybrid to the main hybrid across the full test. All three comparisons pool all areas and monthly horizons. The cancellation share divides cancellation gain by positive net MAE gain. A negative weighting component in the first half puts the cancellation share above 100%.
+
+![EXPLORATORY area-level error offsets](../../data/explore/t03/test_exploratory/exploratory_t04_error_offsets_plot.png)
+
+- [EXPLORATORY exploratory_t04_robustness_cells.csv](../../data/explore/t03/test_exploratory/exploratory_t04_robustness_cells.csv) (SHA256 `ff492eb5b37e0678f65b072df9228ed68af6a8473bfabd879ec5f058ef1df858`)
+- [EXPLORATORY exploratory_t04_worst_half_cells.csv](../../data/explore/t03/test_exploratory/exploratory_t04_worst_half_cells.csv) (SHA256 `6b4fda9d35be5a0858eba3644f0b1cbcade7a2ad4ae435b0cd2a1a8496999bbc`)
+- [EXPLORATORY exploratory_t04_worst_half_wins.csv](../../data/explore/t03/test_exploratory/exploratory_t04_worst_half_wins.csv) (SHA256 `91fd518db217243083b414c468860d2bb795239fbfc94659283a310626160a4e`)
+- [EXPLORATORY exploratory_t04_boosting_consistency.csv](../../data/explore/t03/test_exploratory/exploratory_t04_boosting_consistency.csv) (SHA256 `065281bb63696367dd9e512129a680d95cc08f369d36116e45f35ee91db36fcc`)
+- [EXPLORATORY exploratory_t04_best_model_gaps.csv](../../data/explore/t03/test_exploratory/exploratory_t04_best_model_gaps.csv) (SHA256 `fdfbed7740562218df168afacf50f791671bc13c9b2dff654a7b393ddfe5338b`)
+- [EXPLORATORY exploratory_t04_robustness_scores.csv](../../data/explore/t03/test_exploratory/exploratory_t04_robustness_scores.csv) (SHA256 `81a3a5fdca083ca93134d8d4f0739562d4e2d4cf15938bedcee0a6ee6caec1da`)
+- [EXPLORATORY exploratory_t04_error_offsets.csv](../../data/explore/t03/test_exploratory/exploratory_t04_error_offsets.csv) (SHA256 `1f1d8db930ce02eda5d2495390d35cdc2c788deb2dd038b07a77fa08f689a930`)
+- [EXPLORATORY exploratory_t04_error_offsets_plot.csv](../../data/explore/t03/test_exploratory/exploratory_t04_error_offsets_plot.csv) (SHA256 `2e94c5bc3b8b55e635f1ac4c4e229a26e7ecbe2fc6936e4c8df745ea8bfefa39`)
+- [EXPLORATORY exploratory_t04_error_offsets_plot.png](../../data/explore/t03/test_exploratory/exploratory_t04_error_offsets_plot.png)
+- [EXPLORATORY exploratory_t04_provenance.json](../../data/explore/t03/test_exploratory/exploratory_t04_provenance.json)
+
+Generator `evaluation.test_exploratory_offsets`. Log `logs/t04_analysis.log`.
+
 ## EXPLORATORY complete outputs and provenance
 
 Generator: `evaluation.test_exploratory`; visual generator: `visuals.test_exploratory`. Log: `logs/t03_test_exploratory.log`. Every CSV has an explicit exploratory scope column. No frozen or confirmatory artifact is overwritten.
