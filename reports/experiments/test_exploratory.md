@@ -701,6 +701,56 @@ P1 and P3 compare first half to second half. P2 compares the without-base hybrid
 
 Generator `evaluation.test_exploratory_offsets`. Log `logs/t04_analysis.log`.
 
+## EXPLORATORY 10. Neighbour-lag boosting in the hybrid
+
+### EXPLORATORY predictions recorded before analysis
+
+- P4. The difference is largest in low maturity areas.
+- P5. In low maturity areas, it grows with the horizon.
+- P6. It is small in medium and high maturity areas.
+- P7. The same pattern appears in the validation period.
+
+### EXPLORATORY 10.1 Results
+
+24 November 2026. EXPLORATORY. The three seed forecasts were averaged before mixing. Both hybrids use B2 real and the same nine frozen, origin-dependent maturity and horizon-band weights. Scores average areas within each origin, then origins. RMSE roots pooled MSE. Differences are own-lag minus neighbour-lag loss, so a positive value favours the neighbour-lag specification. The full test and its origin halves overlap.
+
+The two boosting models also differ in tree size (max_leaf_nodes 15 for own lag and 31 for neighbour lags in configs/protocol_v7_test.json). The difference measures neighbour lags plus tree size, not neighbour lags alone. The weights were estimated on the validation period, so validation results are not out of sample.
+
+The prediction table uses hybrid differences over monthly horizons. Means give each horizon equal weight. Low-largest horizons count strict wins over both other terciles out of 12. The low-maturity slope and increasing steps describe the horizon profile. Medium and high maximum absolute differences give the scale without choosing a cutoff for “small”. MAE and RMSE are systems per area per month here, and systems per area per 12-month window for totals in the CSV. MASE is unitless.
+
+| period | metric | low_mean | medium_mean | high_mean | low_largest_horizons | low_h1 | low_h12 | low_increasing_steps | low_slope_per_month | medium_max_abs | high_max_abs |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| first_half | mae | 0.011700 | -0.001788 | -0.012552 | 8 | 0.001162 | 0.020915 | 9 | 0.002213 | 0.005966 | 0.055395 |
+| first_half | mase | 0.080224 | -0.000423 | -0.000526 | 12 | 0.010517 | 0.138817 | 9 | 0.013839 | 0.001943 | 0.003233 |
+| first_half | rmse | 0.007531 | -0.003573 | -0.066869 | 9 | -0.000376 | 0.010573 | 7 | 0.001664 | 0.012568 | 0.142167 |
+| full_test | mae | 0.011717 | -0.006859 | 0.012741 | 5 | 0.001176 | 0.021072 | 10 | 0.002171 | 0.013103 | 0.035671 |
+| full_test | mase | 0.076853 | -0.002162 | 0.000897 | 12 | 0.010022 | 0.133613 | 9 | 0.013274 | 0.004351 | 0.003275 |
+| full_test | rmse | 0.007800 | -0.006435 | -0.013865 | 11 | -0.000063 | 0.011822 | 7 | 0.001512 | 0.011943 | 0.038293 |
+| second_half | mae | 0.011733 | -0.011930 | 0.038035 | 3 | 0.001190 | 0.021229 | 10 | 0.002129 | 0.021002 | 0.094384 |
+| second_half | mase | 0.073482 | -0.003901 | 0.002320 | 12 | 0.009527 | 0.128408 | 10 | 0.012710 | 0.007158 | 0.007436 |
+| second_half | rmse | 0.008075 | -0.009172 | 0.040211 | 4 | 0.000253 | 0.013132 | 10 | 0.001361 | 0.017389 | 0.121263 |
+| validation | mae | 0.018092 | 0.017368 | -0.038195 | 6 | 0.001992 | 0.033315 | 10 | 0.003372 | 0.024222 | 0.073700 |
+| validation | mase | 0.097109 | 0.007740 | -0.003333 | 12 | 0.011837 | 0.167436 | 9 | 0.017389 | 0.010512 | 0.005584 |
+| validation | rmse | 0.003497 | 0.004663 | -0.106526 | 4 | -0.000255 | 0.010929 | 6 | 0.001133 | 0.015541 | 0.164208 |
+
+- P4. On the full test, low maturity has the largest mean signed difference for MASE, RMSE.
+- P5. A positive slope and a higher value at horizon 12 than at horizon 1 occur for MAE, MASE, RMSE. The step counts show whether the increases are monotonic.
+- P6. Both medium and high maximum absolute differences are below the absolute low-maturity mean for MASE. Smallness has no absolute threshold here.
+- P7. The metric-level pattern differs in validation. The largest low-maturity mean occurs for MAE, MASE, growth for MAE, MASE, RMSE, and the relative magnitude check holds for MASE.
+
+The saved test scores for the original hybrid and its comparable baselines reproduced within 1e-10. All 22 confirmatory artifact hashes matched before and after.
+
+![EXPLORATORY own-lag minus neighbour-lag loss](../../data/explore/t03/test_exploratory/exploratory_t05_differences.png)
+
+- [EXPLORATORY exploratory_t05_scores.csv](../../data/explore/t03/test_exploratory/exploratory_t05_scores.csv) (SHA256 `4d84da69c73b8fc1df60e8d134c43016bcb1660701608d4b84ba6f9abb338b12`)
+- [EXPLORATORY exploratory_t05_differences.csv](../../data/explore/t03/test_exploratory/exploratory_t05_differences.csv) (SHA256 `8bc1d362d4b7d842b53c11f1b837fec83a2cd64b4dd0b947c07f1879b07987fb`)
+- [EXPLORATORY exploratory_t05_prediction_checks.csv](../../data/explore/t03/test_exploratory/exploratory_t05_prediction_checks.csv) (SHA256 `5c36305ba2df575ecfac04e55c50c07838444a587ed6d1c5240b0b098f9ca961`)
+- [EXPLORATORY exploratory_t05_plotted.csv](../../data/explore/t03/test_exploratory/exploratory_t05_plotted.csv) (SHA256 `808cea31b74a9e5433a1fb24005f8e21fcdbb8e9618d8cc32b8e04677fa0f5c4`)
+- [EXPLORATORY exploratory_t05_differences.png](../../data/explore/t03/test_exploratory/exploratory_t05_differences.png)
+- [EXPLORATORY exploratory_t05_provenance.json](../../data/explore/t03/test_exploratory/exploratory_t05_provenance.json)
+
+Generator `evaluation.test_exploratory_neighbour_swap`. Log `logs/t05_analysis.log`.
+
 ## EXPLORATORY complete outputs and provenance
 
 Generator: `evaluation.test_exploratory`; visual generator: `visuals.test_exploratory`. Log: `logs/t03_test_exploratory.log`. Every CSV has an explicit exploratory scope column. No frozen or confirmatory artifact is overwritten.
