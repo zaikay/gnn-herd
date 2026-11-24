@@ -751,6 +751,38 @@ The saved test scores for the original hybrid and its comparable baselines repro
 
 Generator `evaluation.test_exploratory_neighbour_swap`. Log `logs/t05_analysis.log`.
 
+### EXPLORATORY 10.2 Relative differences added after reviewing the results
+
+This percentage view was added after the absolute results were seen. It expresses the saved own-minus-neighbour difference as a percentage of own-lag loss. A zero own-lag loss gives an undefined percentage. The monthly mean gives each defined horizon percentage equal weight. The positive count uses the sign of the saved difference. All supplied reproduction values matched to two decimals, and all supplied counts matched.
+
+**Hybrid MAE differences (%) by maturity**
+
+| period | maturity | h1_percent | h12_percent | total_percent | monthly_mean_percent | positive_horizons |
+| --- | --- | --- | --- | --- | --- | --- |
+| full_test | low | 0.19 | 3.09 | 3.55 | 1.73 | 12/12 |
+| full_test | medium | -0.21 | -0.18 | -1.69 | -0.32 | 0/12 |
+| full_test | high | 0.15 | 0.09 | 0.16 | 0.19 | 10/12 |
+| first_half | low | 0.19 | 3.01 | 3.28 | 1.71 | 12/12 |
+| first_half | medium | 0.10 | 0.00 | -1.18 | -0.08 | 4/12 |
+| first_half | high | 0.31 | -0.79 | -1.15 | -0.17 | 5/12 |
+| second_half | low | 0.19 | 3.17 | 3.80 | 1.76 | 12/12 |
+| second_half | medium | -0.52 | -0.35 | -2.09 | -0.55 | 0/12 |
+| second_half | high | 0.00 | 0.86 | 1.25 | 0.51 | 10/12 |
+| validation | low | 0.30 | 4.38 | 5.04 | 2.44 | 12/12 |
+| validation | medium | 0.71 | 0.77 | 0.76 | 0.76 | 12/12 |
+| validation | high | -0.09 | -0.73 | -1.16 | -0.42 | 0/12 |
+
+**Boosting alone, low-maturity 12-month total MAE difference (%)**
+
+| period | boosting_low_total_percent |
+| --- | --- |
+| full_test | 6.46 |
+| first_half | 6.40 |
+| second_half | 6.51 |
+| validation | 9.94 |
+
+[EXPLORATORY relative differences CSV](../../data/explore/t03/test_exploratory/exploratory_t05_relative_differences.csv) (SHA256 `40718df8fc072320dad0a84a2e5251325e42f2f211e48bd95674c053cb4e5688`). Generator `evaluation.test_exploratory_relative`. Log `logs/t05b_analysis.log`.
+
 ## EXPLORATORY complete outputs and provenance
 
 Generator: `evaluation.test_exploratory`; visual generator: `visuals.test_exploratory`. Log: `logs/t03_test_exploratory.log`. Every CSV has an explicit exploratory scope column. No frozen or confirmatory artifact is overwritten.
