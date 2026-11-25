@@ -783,6 +783,53 @@ This percentage view was added after the absolute results were seen. It expresse
 
 [EXPLORATORY relative differences CSV](../../data/explore/t03/test_exploratory/exploratory_t05_relative_differences.csv) (SHA256 `40718df8fc072320dad0a84a2e5251325e42f2f211e48bd95674c053cb4e5688`). Generator `evaluation.test_exploratory_relative`. Log `logs/t05b_analysis.log`.
 
+## EXPLORATORY 11. Graph intervals by maturity, area size and shuffled edges
+
+24 November 2026. These EXPLORATORY analyses were requested after the results were seen.
+
+### EXPLORATORY 11.1 Graph intervals by maturity
+
+B2 real minus each graph control uses saved origin-level ensemble MAE, with origins weighted equally. Negative differences favour B2 real. The frozen method uses Bartlett HAC variance and inverts the HLN-corrected Student t statistic at 95%, with h equal to the monthly horizon and 12 for the total. The 26 all-area full-test mean and interval rows matched protocol v7 to six decimals. Validation is included using the saved ensemble origin losses for 36 origins.
+
+These are pointwise descriptive intervals. Each half has 12 origins. At horizon 12 and the 12-month total, h equals n and the HLN factor is zero. The mean is reported and the bounds and zero-exclusion flag are undefined. A zero-exclusion flag requires both bounds to be strictly on the same side of zero. MAE differences are systems per area per month, or systems per area per 12-month window for the total.
+
+Full-test 12-month totals by maturity. The CSV covers all 13 outcomes and all available periods.
+
+| reference | group | mean_MAE_difference | lower95 | upper95 | excludes_zero |
+| --- | --- | --- | --- | --- | --- |
+| B2_no_graph | low | 0.021742 | -0.028238 | 0.071721 | False |
+| B2_shuffled | low | -0.060156 | -0.160156 | 0.039843 | False |
+| B2_no_graph | medium | -0.100033 | -0.365199 | 0.165132 | False |
+| B2_shuffled | medium | 0.037802 | -0.049672 | 0.125276 | False |
+| B2_no_graph | high | -0.581722 | -1.886327 | 0.722884 | False |
+| B2_shuffled | high | 0.139699 | -1.041957 | 1.321356 | False |
+
+### EXPLORATORY 11.2 Area size
+
+Each of the 2,634 observed Postal Areas contributes one mean over January 2011 through September 2024, excluding masked months. The units are systems per area per month. All five values matched the supplied check.
+
+| statistic | mean_monthly_count |
+| --- | --- |
+| minimum | 0.01 |
+| p10 | 0.25 |
+| median | 3.25 |
+| p90 | 22.54 |
+| maximum | 132.15 |
+
+### EXPLORATORY 11.3 Shuffled graph
+
+The diagnostics cover 9 state and territory codes and 3 seeds. The retained share of original within-state edges ranged from 1.12% to 34.92% across state–seed pairs. Every swap target was reached, and 190 cross-state edges were kept fixed.
+
+All 22 confirmatory artifact hashes matched before and after.
+
+- [EXPLORATORY exploratory_t06_graph_intervals.csv](../../data/explore/t03/test_exploratory/exploratory_t06_graph_intervals.csv) (SHA256 `3a64556b8ac9379729f368dfccc022dbafc673329e1ba1f453035361c3d1e49f`)
+- [EXPLORATORY exploratory_t06_area_means.csv](../../data/explore/t03/test_exploratory/exploratory_t06_area_means.csv) (SHA256 `fa18c925350eb66b63d698816d8438a290fdfe0fd7752a31e80d3f27c1d0fc6e`)
+- [EXPLORATORY exploratory_t06_area_size_summary.csv](../../data/explore/t03/test_exploratory/exploratory_t06_area_size_summary.csv) (SHA256 `e01bb66813a2bcb5058699fe17844a0539761bdfaf3151263c5e442e3038742c`)
+- [EXPLORATORY exploratory_t06_shuffled_summary.csv](../../data/explore/t03/test_exploratory/exploratory_t06_shuffled_summary.csv) (SHA256 `e9863c3f9623c9109ef48b7200bb88f7ff1fe32a5739379b0514bdace79fc8a8`)
+- [EXPLORATORY provenance](../../data/explore/t03/test_exploratory/exploratory_t06_provenance.json)
+
+Generator `evaluation.test_exploratory_graph_maturity`. Log `logs/t06_analysis.log`.
+
 ## EXPLORATORY complete outputs and provenance
 
 Generator: `evaluation.test_exploratory`; visual generator: `visuals.test_exploratory`. Log: `logs/t03_test_exploratory.log`. Every CSV has an explicit exploratory scope column. No frozen or confirmatory artifact is overwritten.
